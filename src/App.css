@@ -2,37 +2,120 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logoutMain{
+  display: none;
+}
+.containa{
+  width: 10%;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logohome{
+  width: 10%;
+  
+}
+.c-form {
+  width:40%;
+  text-align: center;
+  margin: auto;
+  padding: 25px;
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+
+.c-form input {
+  display: block;
+  width:90%;
+  padding: 10px;
+  text-align: center;
+  margin: 15px auto;
+  border-radius: 25px;
+  border: 1px solid rgb(223, 222, 222) !important;
+}
+
+.linkforgot{
+  color:rgb(139, 139, 139);
+}
+
+
+.divider{
+  width: 100%;
+  height: 2px;
+  background: #f1f1f1;
+  margin-top: 10px;
+  margin-bottom: 25px;
+ 
+}
+.container_register{
+  margin-top: 20%;
+}
+h1{
+  color: gray;
+}
+.homeheader{
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:80px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  width: 90%;
+  margin-left: 5%;
+  
+}
+.logoutSvg{
+  color: aliceblue;
+}
+.buttonsbmt{
+  background:dodgerblue;
+  border-radius: 5px!important;
   color: white;
+  width: 70% !important;
+  padding: 10px;
+  margin-top: 30px !important;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid dodgerblue; 
+}
+footer{
+  background: rgb(25, 55, 112);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 10%;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+@media screen and (max-width: 500px){
+
+  .logohome{width: 50%;}
+  .logoutMain{
+    display: block;
+    text-decoration: none;
+    color: aliceblue;
+    margin-top: 17px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .logoutSvg{
+   display: none;
   }
+
+  .c-form {
+    width:80%;
+   
+  }
+  .container_register{
+    margin-top: 50%;
+  }
+
+  .containa{
+    width: 20%;
+    margin: auto;
+  }
+
+
 }
