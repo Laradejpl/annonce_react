@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.connected_header{
+  display: flex;
+}
 
 .logoutMain{
   display: none;
@@ -24,6 +27,18 @@
   box-shadow: 5px 5px 5px rgb(225, 241, 249);
 }
 
+.connected_ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+}
+
+
+
 
 
 .c-form input {
@@ -39,6 +54,18 @@
 .linkforgot{
   color:rgb(139, 139, 139);
 }
+.socialfooter{
+  display: flex;
+  max-height: 70px;
+
+}
+
+.iconsocio{
+  max-width: 50px;
+  max-height: 50px;
+  margin: auto;
+
+}
 
 
 .divider{
@@ -46,14 +73,30 @@
   height: 2px;
   background: #f1f1f1;
   margin-top: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+ 
+}
+.dividerfooter{
+  width: 100%;
+  height: 1px;
+  background: #f1f1f1;
+ 
  
 }
 .container_register{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  
+}
+.container_login{
   margin-top: 20%;
 }
+
+
 h1{
   color: gray;
+  font-size: 17px;
+  
 }
 .homeheader{
   border: 2px solid rgb(239, 239, 239);
@@ -78,19 +121,94 @@ h1{
   text-align: center;
   border: 1px solid dodgerblue; 
 }
-footer{
-  background: rgb(25, 55, 112);
+.footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(45deg, rgb(23, 136, 240), rgb(25, 67, 112));
   color: white;
-  padding: 10px;
   text-align: center;
-  font-size: 15px;
+  font-size: 10px;
+ 
+  
+}
+li{
+  list-style-type: none;
+}
+
+.profile_link{
+  text-decoration: none !important;
+  text-align: center;
+  font-size: 10px;
+  /* aligner verticalement*/
+  
+
+  color: black;
+}
+.profile_link:hover{
+  color: rgb(67, 32, 242);
+  font-size: 13px;
+ 
+
+}
+
+
+.profil_aside{
+  float: left;
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:5px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  width: 10%;
+  margin-left: 5%;
+  
+}
+.profil_aside_cat{
+  
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:123px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  width: 10%;
+  margin-left: 5%;
+
+}
+.container_cat_inter{
+
+  width: 100%;
+  
+}
+.main_home{
+  width: 100%;
+  
   margin-bottom: 10%;
 }
 
 
 
 
+
+
+
+
+
+
+
+
 @media screen and (max-width: 500px){
+
+  .container_register{
+    margin-top: 20% !important;
+    
+    
+  }
+  .container_login{
+    margin-top: 55%;
+  }
+
+  h1{
+    font-size: 20px;
+  }
 
   .logohome{width: 50%;}
   .logoutMain{
@@ -106,6 +224,7 @@ footer{
 
   .c-form {
     width:80%;
+    
    
   }
   .container_register{
@@ -116,6 +235,67 @@ footer{
     width: 20%;
     margin: auto;
   }
+  .iconsocio{
+    max-width: 80px;
+    max-height: 80px;
+    margin: auto;
+  
+  }
 
+  .connected_ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    
+  }
+  .profile_link{
+    text-decoration: none !important;
+    
+  }
+
+  .profil_aside{
+    
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 5px;
+    margin-top:5px ;
+    box-shadow: 5px 5px 5px rgb(225, 241, 249);
+    width: 90%;
+    margin-left: 5%;
+    padding:5px 0px !important;  
+    
+  }
+  .profil_aside_cat{
+  
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 5px;
+    margin-top:40px ;
+    box-shadow: 5px 5px 5px rgb(225, 241, 249);
+    width: 90%;
+    margin-left: 5%;
+    padding:5px 0px !important;
+  
+  }
+
+
+
+
+}
+
+@media screen and (min-width: 1000px){
+
+  .container_login{
+    margin-top: 5%;
+    
+    
+  }
+  .container_register{
+    margin-top: 5%;
+  }
+
+ 
 
 }

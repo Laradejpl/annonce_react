@@ -1,0 +1,51 @@
+import React, {useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
+
+
+
+    const Connected = (props)=>{
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+
+
+	  useEffect(() => {
+	
+		const changeWidth = () => {
+		  setScreenWidth(window.innerWidth);
+		}
+	
+		window.addEventListener('resize', changeWidth)
+	
+		return () => {
+			window.removeEventListener('resize', changeWidth)
+		}
+	
+	  }, [])
+
+
+    return (
+        <div className='connected_aside'>
+        <ul className="connected_ul">
+            <li><Link to="/profil" className="profile_link">Profil</Link></li>
+            {( screenWidth > 500) && (
+            <div className='divider'></div>
+
+            )}
+            <li><Link to="/annonces" className="profile_link">Vos annonces</Link></li>
+            {( screenWidth > 500) && (
+            <div className='divider'></div>
+
+            )}
+            <li><Link to="/admin" className="profile_link">admin</Link></li>
+          
+        </ul>
+
+        </div>
+
+    )
+
+
+}
+
+export default Connected;

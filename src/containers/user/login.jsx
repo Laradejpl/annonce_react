@@ -20,7 +20,7 @@ const Login = (props)=>{
         lottie.loadAnimation({
             container:containa.current,
             renderer: 'svg',
-            loop: true,
+            loop: false,
             autoplay: true,
             animationData: require('../../assets/login.json')
         })
@@ -52,10 +52,11 @@ const Login = (props)=>{
     }
     
     return (
-        <div className='container_register'>
+        <div className='container_login'>
             <div className='containa' ref={containa}></div>
             <h1>Se connecter</h1>
             <div className='divider'></div>
+            <div className='form_login'>
             <form
                 className="c-form"
                 onSubmit={(e)=>{
@@ -86,6 +87,7 @@ const Login = (props)=>{
                     <Link to="/register" className='linkforgot'>Oublie du mot passe</Link>
                 </div>
 	       </form>
+           </div>
         </div>
     )
 }
