@@ -37,6 +37,11 @@
   padding: 0;
 }
 
+.titlehome{
+  color: #f1f1f1;
+  font-size: 30px;
+}
+
 
 
 
@@ -105,7 +110,9 @@ h1{
   box-shadow: 5px 5px 5px rgb(225, 241, 249);
   width: 90%;
   margin-left: 5%;
-  
+  background-image: url("../src/assets/maldives.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .logoutSvg{
   color: aliceblue;
@@ -182,11 +189,30 @@ li{
   width: 100%;
   
   margin-bottom: 10%;
+ 
 }
 
+.sliderimg{
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
+.profil_first{
 
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:80px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+}
 
+ #profilImg{
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:80px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+} 
 
 
 
