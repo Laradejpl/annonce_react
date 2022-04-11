@@ -160,7 +160,7 @@ const Profil = (props)=>{
 	                }}
 	        >	
 	            {img !== null && <CloudinaryContext cloudName="dehjoundt">
-		            <div>
+		            <div className='cadreImg'>
 		              <Image publicId={user.infos.imageUser} id="profilImg">
 		                <Transformation quality="auto" fetchFormat="auto" />
 		              </Image>

@@ -72,10 +72,12 @@ const ReactCardSlider = (props) => {
                           return(
 
                               <div className='slider-card'>
-
-                                   <div className='slider-card-image'><img src={slide.image} alt="desc" className='imgsliderhome'/></div>
+                     
+                      <div className='slider-card-image'><img src={slide.image} alt="desc" className='imgsliderhome'/></div>
                                    <p className='slider-card-title'>{slide.title}</p>
                                    <p className='slider-card-description'>{slide.description}</p>
+
+                                 
 
                               </div>
                           )
