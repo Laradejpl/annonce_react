@@ -11,6 +11,7 @@ import Profil from './containers/profil'
 import Search from './containers/search'
 import Detail from './containers/detail'
 import Post from './containers/post'
+import ImagesAnnonces from './containers/imagesAnnonces';
 
 import {Routes, Route} from 'react-router-dom';
 import RequireAuth from './helpers/require-data-auth'
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/search" element={<RequireAuth child={Search} auth={true}/>}/>
           <Route exact path="/detail/:id" element={<RequireAuth child={Detail} auth={true}/>}/>
           <Route exact path="/post" element={<RequireAuth child={Post} auth={true}/>}/>
+          <Route exact path="/imagesAnnonces/:id" element={<RequireAuth child={ImagesAnnonces} auth={true}/>}/>
         
         </Routes>
       </main>

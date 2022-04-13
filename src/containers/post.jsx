@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { Navigate } from "react-router-dom";
-import {saveOneAds,getAllAdsByUser,getOneAnnonce} from '../api/annonce';
+import {saveOneAds,getAllAdsByUser,getLastAdsByUser} from '../api/annonce';
 import {selectUser} from '../slices/userSlice';
-import {setInfos} from '../slices/annonceSlice';
+import annonceSlice, {loadUserAnnonces, selectAnnonces,getOneAnnonce} from '../slices/annonceSlice';
 import {Link} from 'react-router-dom';
 import {categorys} from '../helpers/category';
 import axios from 'axios';
 import { config } from "../config";
 
 
-const Post = ()=>{
+const Post = (props)=>{
 
-    const dispatch = useDispatch();
-    const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  const annonce = useSelector(selectAnnonces);
+  const dispatch = useDispatch();
+    
    
     const [redirect, setRedirect] = useState(false);
     const [error, setError] = useState(null);
@@ -27,6 +29,8 @@ const Post = ()=>{
     const [city, setCity] = useState('');
     const [lat, setLat] = useState('');
     const [lng, setLng] = useState('');
+    const [idads, setIdads] = useState('');
+    //const [idads, setIdads] = useState('');
    
     
  
@@ -66,7 +70,19 @@ const Post = ()=>{
                 saveOneAds(data)
                 .then(res => {
                     if(res.status === 200){
-                        setRedirect(true);
+
+                      getAllAdsByUser(user.infos.id)
+                      getLastAdsByUser(user.infos.id)
+                      
+                      .then(res=>{
+                        if(res.status === 200){
+                          dispatch(loadUserAnnonces(res.result))
+                          dispatch(getOneAnnonce(res.result[0].id))
+                          setIdads(res.result[0].id)
+
+                          setRedirect(true)
+                        }
+                      })
                     }
                 })
                 .catch(err => {
@@ -86,7 +102,8 @@ const Post = ()=>{
         
     return (
         <div className='container_post'>
-        {redirect && <Navigate to="/" />}
+        {/*redirection id annonce*/}
+        {redirect && <Navigate to={"/imagesAnnonces/" + idads} />}
               <h1 className="title3">
                Enregitrez une annonce.
               </h1>

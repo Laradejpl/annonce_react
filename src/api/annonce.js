@@ -34,6 +34,18 @@ export const getAllAdsByUser = (user_id) => {
         );
     
 }
+// avoir la derniere annonce par user
+export const getLastAdsByUser = (user_id) => {
+    return axios.get(config.api_url + "/api/v1/lastads/" + user_id, {headers: {"x-access-token": token}} )
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    }
 
 //update des images
 export const updateImages = (datas, id) => {

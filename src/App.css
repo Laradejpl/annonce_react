@@ -296,6 +296,7 @@ li{
   .c-form {
     width:80%;
     
+    
    
   }
   .container_register{
@@ -359,6 +360,13 @@ li{
   
 }
 
+#profilImg{
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:2px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+} 
+
 
 }
 
@@ -373,6 +381,16 @@ li{
     margin-top: 5%;
   }
 
- 
+  .cadreImg{
+    margin-top: 5px;
+    
+  }
+
+  #profilImg{
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 10px;
+    margin-top:2px ;
+    box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  } 
 
 }
