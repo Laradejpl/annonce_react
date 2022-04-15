@@ -42,6 +42,18 @@
   font-size: 30px;
 }
 
+.totalAds{
+  width: 20%;
+  margin: auto;
+  margin-top: 1%;
+  padding: 5px;
+  border-radius: 15px;
+  color: #f1f1f1;
+  border: 1px solid rgb(12, 6, 210);
+  background-color: rgb(43, 119, 226);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+}
+
 
 
 
@@ -257,6 +269,11 @@ li{
 
 
 @media screen and (max-width: 500px){
+  
+  .totalAds{
+  width: 60% !important;
+  font-size: 12px;
+}
 
   .container_register{
     margin-top: 20% !important;
