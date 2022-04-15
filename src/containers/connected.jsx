@@ -31,17 +31,17 @@ import { capitalize } from '../helpers/toolbox';
     return (
         <div className='connected_aside'>
         <ul className="connected_ul">
-        <Link to="/profil">{ capitalize(user.infos.firstName)}</Link>
+        <Link to="/profil" className="profile_link_connected_user">{ capitalize(user.infos.firstName)}</Link>
             {( screenWidth > 500) && (
             <div className='divider'></div>
 
             )}
-            <li><Link to="/annonces" className="profile_link">Vos annonces</Link></li>
+            <li><Link to="/annonces" className="profile_link_connected">Vos annonces</Link></li>
             {( screenWidth > 500) && (
             <div className='divider'></div>
 
             )}
-            <li><Link to="/admin" className="profile_link">admin</Link></li>
+            <li><Link to="/admin" className="profile_link_connected">admin</Link></li>
           
         </ul>
 

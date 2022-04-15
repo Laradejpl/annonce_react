@@ -30,7 +30,7 @@ const Post = (props)=>{
     const [lat, setLat] = useState('');
     const [lng, setLng] = useState('');
     const [idads, setIdads] = useState('');
-    //const [idads, setIdads] = useState('');
+   
    
     
  
@@ -135,6 +135,7 @@ const Post = (props)=>{
                       />
                    
                       <input
+                        
                         type="text"
                         name="description"
                         placeholder='description'

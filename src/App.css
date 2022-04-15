@@ -17,6 +17,17 @@
   width: 10%;
   
 }
+.totalAds{
+  width: 20%;
+  margin: auto;
+  margin-top: 1%;
+  padding: 5px;
+  border-radius: 15px;
+  color: #f1f1f1;
+  border: 1px solid rgb(12, 6, 210);
+  background-color: rgb(43, 119, 226);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+}
 .c-form {
   width:40%;
   text-align: center;
@@ -169,19 +180,31 @@ li{
 }
 
 .profile_link{
-  text-decoration: none !important;
-  text-align: center;
-  font-size: 10px;
+  background: transparent;
+    border: none !important;
+    color: black;
+    font-size:10;
   /* aligner verticalement*/
   
 
   color: black;
 }
 .profile_link:hover{
-  color: rgb(67, 32, 242);
+  color: rgb(242, 56, 32);
   font-size: 13px;
  
 
+}
+.profile_link_connected{
+ text-decoration: none;
+ color: black;
+ font-size:10px;
+}
+.profile_link_connected_user{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  
 }
 
 
@@ -325,9 +348,17 @@ li{
     
   }
   .profile_link{
-    text-decoration: none !important;
+    /*text-decoration: none !important;*/
+    background: transparent;
+    border: none !important;
+    color: black;
+    font-size:9px;
     
   }
+  .profile_link_connected{
+  
+    font-size:9px !important;
+   }
 
   .profil_aside{
     
@@ -366,6 +397,23 @@ li{
   margin-top:2px ;
   box-shadow: 5px 5px 5px rgb(225, 241, 249);
 } 
+
+.totalAds{
+  width: 60% !important;
+  font-size: 12px;
+}
+.profile_link_connected_user{
+  text-decoration: none !important;
+  color: rgb(0, 0, 0) !important;
+  font-size:12px;
+  font-weight: bold;
+  background-color: #f1f1f1 !important;
+  
+
+  
+ 
+  
+}
 
 
 }
