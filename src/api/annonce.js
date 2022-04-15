@@ -121,7 +121,7 @@ export const updateAnnonce = (datas, id) => {
 
     //avoir toute les annonces par category
     export const getAllAdsByCat = (category) => {
-        return axios.get(config.api_url + "/api/v1/allads/category" + category )
+        return axios.get(config.api_url + "/api/v1/allads/category/" + category)
             .then(response => {
                 return response.data;
               
