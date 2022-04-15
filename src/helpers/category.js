@@ -1,1 +1,1 @@
-export const categorys = [ "Voillier", "Cruiser", "Jet ski", "Yatch", "Jetboat",  "Accessoires", "Service"]
+export const categorys = [ "Voillier", "Cruiser", "Jetski", "Yatch", "Jetboat","Peniche",  "Accessoires", "Service"]

@@ -11,6 +11,14 @@ import Profil from './containers/profil'
 import Search from './containers/search'
 import Detail from './containers/detail'
 import Post from './containers/post'
+import Voillier from './containers/voillier'
+import Cruiser from './containers/cruiser';
+import Jetski from './containers/jetski';
+import Yatch from './containers/yatch';
+import Peniche from './containers/peniche';
+import Jetboat from './containers/jetboat';
+import Accessoires from './containers/accessoires';
+import Service from './containers/service';
 
 import {Routes, Route} from 'react-router-dom';
 import RequireAuth from './helpers/require-data-auth'
@@ -30,6 +38,14 @@ function App() {
           <Route exact path="/search" element={<RequireAuth child={Search} auth={true}/>}/>
           <Route exact path="/detail/:id" element={<RequireAuth child={Detail} auth={true}/>}/>
           <Route exact path="/post" element={<RequireAuth child={Post} auth={true}/>}/>
+          <Route exact path="/voillier" element={<RequireAuth child={Voillier} auth={true}/>}/>
+          <Route exact path="/cruiser" element={<RequireAuth child={Cruiser} auth={true}/>}/>
+          <Route exact path="/jetski" element={<RequireAuth child={Jetski} auth={true}/>}/>
+          <Route exact path="/yatch" element={<RequireAuth child={Yatch} auth={true}/>}/>
+          <Route exact path="/peniche" element={<RequireAuth child={Peniche} auth={true}/>}/>
+          <Route exact path="/jetboat" element={<RequireAuth child={Jetboat} auth={true}/>}/>
+          <Route exact path="/accessoires" element={<RequireAuth child={Accessoires} auth={true}/>}/>
+          <Route exact path="/service" element={<RequireAuth child={Service} auth={true}/>}/>
         
         </Routes>
       </main>
