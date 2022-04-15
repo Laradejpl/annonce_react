@@ -239,7 +239,17 @@ li{
   box-shadow: 5px 5px 5px rgb(225, 241, 249);
 } 
 
-
+.profile_link_connected{
+  text-decoration: none;
+  color: black;
+  font-size:10px;
+ }
+ .profile_link_connected_user{
+   text-decoration: none ;
+   color: black;
+   font-weight: bold;
+   
+ }
 
 
 

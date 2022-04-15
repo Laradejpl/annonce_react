@@ -1,11 +1,15 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import { capitalize } from '../helpers/toolbox';
+import { useSelector } from "react-redux";
+import {selectUser} from '../slices/userSlice';
 
 
 
     const Connected = (props)=>{
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const user = useSelector(selectUser)
 
 
 
@@ -27,7 +31,7 @@ import {Link} from 'react-router-dom';
     return (
         <div className='connected_aside'>
         <ul className="connected_ul">
-            <li><Link to="/profil" className="profile_link">Profil</Link></li>
+        <Link to="/profil" className="profile_link_connected_user">{ capitalize(user.infos.firstName)}</Link>
             {( screenWidth > 500) && (
             <div className='divider'></div>
 
