@@ -3,6 +3,13 @@ import jetskimg from '../assets/jetskii.png'
 import Connected from './connected';
 import Categories from './categories';
 import {getAllAdsByCat} from '../api/annonce';
+import {
+    Image,
+    Video,
+    Transformation,
+    CloudinaryContext
+  } from "cloudinary-react";
+
 import moment from "moment";
 import '../card.css';
 
@@ -16,6 +23,8 @@ const Jetski = (props) => {
 const [annonces, setAnnonces] = useState([]);
 
 
+
+
 let category = props.category;
 category="Jetski";
 useEffect(()=>{
@@ -23,6 +32,7 @@ useEffect(()=>{
 	.then((res)=>{
 		console.log(res);
 		setAnnonces(res.result)
+		
 
 	})
 	.catch((err)=>{
@@ -32,6 +42,8 @@ useEffect(()=>{
 useEffect(()=>{
 	
 },[annonces])
+
+
 
 
 
@@ -50,8 +62,14 @@ useEffect(()=>{
 
 
 					<div className='ads-card'>
-                     
-					 <div className='ads-card-image'><img src={annonce.imageUrl} alt="desc" className='imgsads'/></div>
+					<CloudinaryContext cloudName="dehjoundt">
+					 <div className='ads-card-image'>
+					 <Image publicId={annonce.imageUrl1} className='imgsads'>
+			                <Transformation quality="auto" fetchFormat="auto" />
+			              </Image>
+			            </div>
+			         </CloudinaryContext>
+
 					 <span className='ads-card-date'>{moment(annonce.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{annonce.title}</p>
 								  <p className='ads-card-description'>{`${annonce.description.substr(0, 80)} ...`}</p>
 								  <p className='slider-card-price'>{`${annonce.price} €`}</p>

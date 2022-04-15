@@ -1,7 +1,7 @@
 .ads-card{
     max-width:280px;
     min-width: 280px;
-    height: 250px;
+    height: 265px;
     background:white;
     border-radius: 10px;
     display: inline-block;
@@ -14,7 +14,7 @@
 
 .ads-card-image{
     width: 100%;
-    height: 120px;
+    height: 130px;
     background-color: rgb(240 240 240 / 80%);
     
     border-top-left-radius: 10px ;
@@ -80,4 +80,14 @@
     color: gray;
    
     
+}
+
+.imgsads{
+
+    width: 100%;
+    height: 130px;
+    background-color: rgb(240 240 240 / 80%);
+    
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 10px;
 }

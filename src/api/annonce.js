@@ -20,6 +20,8 @@ export const saveOneAds = (datas) => {
 }
 
 
+
+
 // avoir les annonces par user
 export const getAllAdsByUser = (user_id) => {
     return axios.get(config.api_url + "/api/v1/allads/" + user_id, {headers: {"x-access-token": token}} )
@@ -49,7 +51,7 @@ export const getLastAdsByUser = (user_id) => {
 
 //update des images
 export const updateImages = (datas) => {
-    return axios.put(config.api_url + "/api/v1/ads/update/images" , datas, {headers: {"x-access-token": token}} )
+    return axios.post(config.api_url + "/api/v1/ads/update/images", datas, {headers: {"x-access-token": token}} )
         .then(response => {
             return response.data;
         }
@@ -78,7 +80,7 @@ export const getOneAnnonce = (id) => {
 
 //update de l'annonce
 export const updateAnnonce = (datas, id) => {
-    return axios.post(config.api_url + '/api/v1/ads/update/'+id, datas, {headers: {"x-access-token": token}} )
+    return axios.put(config.api_url + '/api/v1/ads/update/'+ id, datas, {headers: {"x-access-token": token}} )
         .then(response => {
             return response.data;
         }
@@ -133,6 +135,8 @@ export const updateAnnonce = (datas, id) => {
             );
         
     }
+
+    
 
 
 

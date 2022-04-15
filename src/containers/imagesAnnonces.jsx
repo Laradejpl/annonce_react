@@ -33,8 +33,7 @@ const ImagesAnnonces = (props)=>{
                       const [price, setPrice] = useState('');
                       const [category, setCategory] = useState('');
                       const [img, setImg] = useState(null);
-                      
-                      const [picture,setPicture] = useState([])
+	                    const [picture,setPicture] = useState([])
 
                       console.log(params.id);
                       console.log("la categorie de id",annonce.annonce[0].id);
@@ -60,14 +59,17 @@ const ImagesAnnonces = (props)=>{
                             imageUrl1: picture[1],
                             imageUrl2: picture[2],
                             id: annonce.annonce[0].id
+                         
+                
+                
                         }
                         console.log(params.id);
 
                         console.log("picture",datas);
-                       /* updateImages(datas)
+                        updateImages(datas)
                           .then((res)=>{
                             if(res.status === 200){
-                              
+                              /*
                                 getOneAnnonce(params.id)
                                 .then((response)=>{
                                 	
@@ -75,9 +77,9 @@ const ImagesAnnonces = (props)=>{
                                     dispatch(loadUserAnnonces(myAnnonce))
                                    
                                     setImg(response.result.imageUrl)
-                                })
+                                })*/
                                 setImg(annonce.annonce[0].imageUrl)
-                                setMsg("Vous avez bien ajouté vos images")
+                                setMsg("Vous avez bien ajouté voss images")
                             }else{
                               setMsg("L'image n'a pas été ajouter");
                             }
@@ -85,7 +87,7 @@ const ImagesAnnonces = (props)=>{
                           .catch((err)=>{
                             console.log(err);
                           }
-                          )*/
+                          )
                         }
                         
                          const checkUploadResult = (resultEvent) => {
@@ -99,7 +101,7 @@ const ImagesAnnonces = (props)=>{
                                         pictures.push(resultEvent.info.public_id )
                                         console.log("mypicts",pictures);
                                         setPicture(pictures)
-                                        savePictures()
+                                       savePictures()
                               
                                  }else{
                                         console.log("Erreur envoi fichier")

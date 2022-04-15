@@ -19,6 +19,7 @@ import Peniche from './containers/peniche';
 import Jetboat from './containers/jetboat';
 import Accessoires from './containers/accessoires';
 import Service from './containers/service';
+import ImagesAnnonces from './containers/imagesAnnonces';
 
 import {Routes, Route} from 'react-router-dom';
 import RequireAuth from './helpers/require-data-auth'
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/jetboat" element={<RequireAuth child={Jetboat} auth={true}/>}/>
           <Route exact path="/accessoires" element={<RequireAuth child={Accessoires} auth={true}/>}/>
           <Route exact path="/service" element={<RequireAuth child={Service} auth={true}/>}/>
+          <Route exact path="/imagesAnnonces/:id" element={<RequireAuth child={ImagesAnnonces} auth={true}/>}/>
         
         </Routes>
       </main>

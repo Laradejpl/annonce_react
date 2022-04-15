@@ -1,23 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 
 const initialState = {
-    annonce:[],
+    allAnnonces:[],
+    oneAnnonce:{},
 };
 
 export const annonceSlice = createSlice({
-    name: "annonce",
+    name: "annonces",
     initialState,
     reducers: {
-        setInfos: (state, action) => {
+       //info d'une annonce
+        getOneAnnonce: (state, action) => {
+            state.oneAnnonce = action.payload;
+        },
+        loadUserAnnonces: (state, action)=>{
             state.annonce = action.payload;
         }
     }
 });
 
-export const { setInfos } = annonceSlice.actions;
+export const { loadUserAnnonces,getOneAnnonce } = annonceSlice.actions;
 //selectors
-export const selectAnnonce = state => state.annonce
+export const selectAnnonces = state => state.annonce
 
 
 export default annonceSlice.reducer;
