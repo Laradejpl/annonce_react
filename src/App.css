@@ -140,6 +140,35 @@ h1{
   background-size: cover;
   background-repeat: no-repeat;
 }
+.detailheader{
+
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:80px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  width: 90%;
+  margin-left: 5%;
+  background-image: url("../src/assets/nautisme.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.titledetailhead{
+  color: #f1f1f1;
+  font-size: 30px;
+}
+.pfdetail{
+  color: #f1f1f1;
+  font-size: 15px;
+
+}
+.bg_detail_header{
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2178ba+44,5dd3b7+97&0.65+67,0+100 */
+background: -moz-linear-gradient(top,  rgba(33,120,186,0.65) 44%, rgba(59,159,185,0.65) 67%, rgba(93,211,183,0.06) 97%, rgba(93,211,183,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(33,120,186,0.65) 44%,rgba(59,159,185,0.65) 67%,rgba(93,211,183,0.06) 97%,rgba(93,211,183,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(33,120,186,0.65) 44%,rgba(59,159,185,0.65) 67%,rgba(93,211,183,0.06) 97%,rgba(93,211,183,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a62178ba', endColorstr='#005dd3b7',GradientType=0 ); /* IE6-9 */
+
+}
 .logoutSvg{
   color: aliceblue;
 }

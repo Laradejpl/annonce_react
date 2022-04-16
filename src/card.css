@@ -46,6 +46,11 @@
     
    
 }
+.iconsearch{
+    position: absolute;
+    color: antiquewhite;
+    padding: 3px;
+}
 .divider-cat{
     display: block;
 }

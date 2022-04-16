@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import jetskimg from '../assets/jetskii.png'
+import { BsSearch } from "react-icons/bs";
+import {Link} from 'react-router-dom';
+
 
 import {getAllAdsByCat,getNbAdsByCat} from '../api/annonce';
 import {
@@ -75,13 +78,17 @@ useEffect(()=>{
 				return (
                 
 					<div className='ads-card'>
+					<Link to={"/detail/" + annonce.id}>
 					<CloudinaryContext cloudName="dehjoundt">
 					 <div className='ads-card-image'>
+					 <BsSearch  className='iconsearch'></BsSearch>
+					
 					 <Image publicId={annonce.imageUrl1} className='imgsads'>
 			                <Transformation quality="auto" fetchFormat="auto" />
 			              </Image>
 			            </div>
 			         </CloudinaryContext>
+					 </Link>
 
 					 <span className='ads-card-date'>{moment(annonce.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{annonce.title}</p>
 								  <p className='ads-card-description'>{`${annonce.description.substr(0, 80)} ...`}</p>

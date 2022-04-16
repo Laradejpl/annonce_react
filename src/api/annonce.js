@@ -65,7 +65,7 @@ export const updateImages = (datas) => {
 
 //avoir une annonce par id
 export const getOneAnnonce = (id) => {
-    return axios.get(config.api_url + "/api/v1/ads/one/" + id, {headers: {"x-access-token": token}} )
+    return axios.get(config.api_url + "/api/v1/ads/one/" + id )
         .then(response => {
             return response.data;
           
@@ -124,6 +124,21 @@ export const updateAnnonce = (datas, id) => {
     //avoir toute les annonces par category
     export const getAllAdsByCat = (category) => {
         return axios.get(config.api_url + "/api/v1/allads/category/" + category)
+            .then(response => {
+                return response.data;
+              
+            }
+            )
+            .catch(error => {
+                return error;
+            }
+            );
+        
+    }
+
+    //avoir les infos du posteur d'annoncce
+    export const getUserInfoByAnnonce = (id ,user_id) => {
+        return axios.get(config.api_url + "/api/v1/ads/user/" + id  +"/" + user_id)
             .then(response => {
                 return response.data;
               

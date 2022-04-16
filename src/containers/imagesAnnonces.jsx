@@ -12,11 +12,11 @@ import {
 
 import {updateImages, getAllAdsByUser, updateAnnonce} from '../api/annonce';
 import {useDispatch,useSelector } from 'react-redux';
-import {loadUserAnnonces, selectAnnonces,getOneAnnonce} from '../slices/annonceSlice';
-import {selectUser,connectUser} from '../slices/userSlice';
+import {loadUserAnnonces, selectAnnonces} from '../slices/annonceSlice';
+import {selectUser} from '../slices/userSlice';
 import moment from "moment";
 import "moment/locale/fr";
-import { getOneUser } from '../api/user';
+
 moment.locale("fr");
 
 
