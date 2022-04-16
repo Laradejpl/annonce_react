@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import jetskimg from '../assets/jetskii.png'
-import Connected from './connected';
-import Categories from './categories';
-import {getAllAdsByCat} from '../api/annonce';
+
+import {getAllAdsByCat,getNbAdsByCat} from '../api/annonce';
 import {
     Image,
     Video,
@@ -21,6 +20,7 @@ const Jetski = (props) => {
 
 
 const [annonces, setAnnonces] = useState([]);
+const [totalAdsCat, setTotalAdsCat] = useState(0);
 
 
 
@@ -43,7 +43,19 @@ useEffect(()=>{
 	
 },[annonces])
 
-
+// le nombre total d'annonces
+useEffect(()=>{
+	getNbAdsByCat(category)
+	.then((res)=>{
+		setTotalAdsCat(res.result[0].totalbyCategory)
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+	
+		
+		
+},[])
 
 
 
@@ -54,13 +66,14 @@ useEffect(()=>{
 			<h1 className='titlehome'>Jetski</h1>
 			<p>Plus qu'un bateau une monture puissante</p>
 		  </header>
+		  <div className='totalAds'>{`Nous avons ${totalAdsCat} Annonces`}</div>
+		  <h2> les meilleurs  Jetski d'occasion</h2>
+		  <div className='divider'></div>
 		  <section className='sectforcards'>
 
-		
 			{annonces.map((annonce, index) => {
 				return (
-
-
+                
 					<div className='ads-card'>
 					<CloudinaryContext cloudName="dehjoundt">
 					 <div className='ads-card-image'>
@@ -85,12 +98,7 @@ useEffect(()=>{
 		
 			</section>
 		
-		    <aside className='profil_aside_jski'>
-			   <Connected/>
-			</aside>
-		    <aside className='profil_aside_cat_jski'>
-		              <Categories/>
-		    </aside>
+		   
 			
 		</main>
     );
