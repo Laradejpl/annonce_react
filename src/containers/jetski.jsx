@@ -69,6 +69,7 @@ useEffect(()=>{
 			<h1 className='titlehome'>Jetski</h1>
 			<p>Plus qu'un bateau une monture puissante</p>
 		  </header>
+		  
 		  <div className='totalAds'>{`Nous avons ${totalAdsCat} Annonces`}</div>
 		  <h2> les meilleurs  Jetski d'occasion</h2>
 		  <div className='divider'></div>

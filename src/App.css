@@ -122,7 +122,15 @@
 .container_login{
   margin-top: 20%;
 }
-
+.imginfouser{
+  width:100px;
+}
+.iconNtext{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 h1{
   color: gray;
@@ -160,6 +168,62 @@ h1{
   color: #f1f1f1;
   font-size: 15px;
 
+}
+.sect_detail{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 100px;
+  padding: 0;
+}
+.article-detail{
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  border-radius: 10px;
+  width: 50%;
+  margin-left: 5px;
+  margin-top: 1%;
+  
+ 
+ 
+ 
+}
+.aside_photo_container{
+  width: 310px;
+  margin-top: 1%;
+  
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+}
+.ads-card-detail{
+ 
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 5%;
+  margin-top: 1%;
+}
+.article-detail-user{
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 5px;
+  margin-top: 1%;
+  
+ 
+ 
+ 
+ 
+}
+
+.imgsadetail{
+    width: 300px;
+    margin-left: 5px;
 }
 .bg_detail_header{
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2178ba+44,5dd3b7+97&0.65+67,0+100 */
