@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
-import {getOneAnnonce,getUserInfoByAnnonce } from '../api/annonce';
+import {getOneAnnonce,getUserInfoByAnnonce,getLastTreeAdsByCat } from '../api/annonce';
 import { useParams } from "react-router";
 import {selectUser,connectUser} from '../slices/userSlice';
 import {useDispatch,useSelector } from 'react-redux';
@@ -31,6 +31,7 @@ const Detail = (props)=>{
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [pictureUser, setPictureUser] = useState('');
+  const [categoryAds, setCategoryAds] = useState('');
   const [img, setImg] = useState('');
   const  [img1, setImg1] = useState('');
   const  [img2, setImg2] = useState('');
@@ -38,6 +39,12 @@ const Detail = (props)=>{
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [city, setCity] = useState('');
+  // pour les trois annonces similaires
+    const [treeAds, setTreeAds] = useState([]);
+    const [titleTreeAds, setTitleTreeAds] = useState([]);
+    const [descriptionTreeAds, setDescriptionTreeAds] = useState([]);
+    const [priceTreeAds, setPriceTreeAds] = useState([]);
+    const [imgTreeAds, setImgTreeAds] = useState([]);
     
     useEffect(() => {
         getOneAnnonce(id)
@@ -52,10 +59,9 @@ const Detail = (props)=>{
           setDescription(res.result.description);
           setPrice(res.result.price);
           setCity(res.result.city);
+          setCategoryAds(res.result.category);
+
         
-          
-           
-            
           
         })
         .catch(err => {
@@ -79,6 +85,24 @@ const Detail = (props)=>{
         })
         
     },[])
+
+    useEffect(() => {
+        getLastTreeAdsByCat(categoryAds)
+        .then(res => {
+          console.log("LAST",res);
+          setTreeAds(res.result);
+          setTitleTreeAds(res.result.title);
+          setDescriptionTreeAds(res.result.description);
+          setPriceTreeAds(res.result.price);
+          setImgTreeAds(res.result.imageUrl);
+       
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
+    },[])
+
     
 
 
@@ -119,7 +143,6 @@ const Detail = (props)=>{
           <CloudinaryContext cloudName="dehjoundt">
            <div className='ads-card-detail'>
  
-
            <Image publicId={img1} className='imgsadetail'>
                       <Transformation quality="auto" fetchFormat="auto" />
                     </Image>
@@ -133,7 +156,6 @@ const Detail = (props)=>{
           <CloudinaryContext cloudName="dehjoundt">
            <div className='ads-card-detail'>
  
-
            <Image publicId={img2} className='imgsadetail'>
                       <Transformation quality="auto" fetchFormat="auto" />
                     </Image>
@@ -181,35 +203,14 @@ const Detail = (props)=>{
             </div>
             <div className='divider'></div>
 
-
        </div>
-
 
     </article>
 
-
-
-</section>
+  </section>
       
 
-
-
-  
-
-
-
-        
-
-
-
-              
-
-      
-
-
-
-
-    </main>
+</main>
    
 
 

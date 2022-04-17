@@ -151,6 +151,21 @@ export const updateAnnonce = (datas, id) => {
         
     }
 
+    // avoir les 3 dernieres annonces par category
+    export const getLastTreeAdsByCat = (category) => {
+        return axios.get(config.api_url + "/api/v1/lastannonces/category/" + category)
+            .then(response => {
+                return response.data;
+              
+            }
+            )
+            .catch(error => {
+                return error;
+            }
+            );
+        
+    }
+
     
 
 
