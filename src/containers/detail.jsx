@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import {getOneAnnonce,getUserInfoByAnnonce,getLastTreeAdsByCat } from '../api/annonce';
-import { useParams } from "react-router";
-import {selectUser,connectUser} from '../slices/userSlice';
-import {useDispatch,useSelector } from 'react-redux';
-import { getOneUser } from '../api/user';
+
 import logo from '../assets/pharelogo.png'
+import { BsSearch } from "react-icons/bs";
 import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
 
 import {
@@ -14,7 +12,7 @@ import {
   Transformation,
   CloudinaryContext
 } from "cloudinary-react";
-import moment from 'moment';
+import moment from "moment";
 import localization from 'moment/locale/fr';
 
 moment.updateLocale('fr', localization);
@@ -28,6 +26,7 @@ const Detail = (props)=>{
   const [userId, setUserId] = useState(0);
   const [OneAd, setOneAd] = useState({});
   const [user, setUser] = useState({});
+  const [treeAds, setTreeAds] = useState([]);
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [pictureUser, setPictureUser] = useState('');
@@ -40,17 +39,14 @@ const Detail = (props)=>{
   const [price, setPrice] = useState('');
   const [city, setCity] = useState('');
   // pour les trois annonces similaires
-    const [treeAds, setTreeAds] = useState([]);
-    const [titleTreeAds, setTitleTreeAds] = useState([]);
-    const [descriptionTreeAds, setDescriptionTreeAds] = useState([]);
-    const [priceTreeAds, setPriceTreeAds] = useState([]);
-    const [imgTreeAds, setImgTreeAds] = useState([]);
+    
+    
+    
     
     useEffect(() => {
         getOneAnnonce(id)
         .then(res => {
-          console.log("ANNONCE",res);
-          console.log( "ZZZZ",res.result.title);
+        
           setOneAd(res.result);
           setImg(res.result.imageUrl);
           setImg1(res.result.imageUrl1);
@@ -67,13 +63,11 @@ const Detail = (props)=>{
         .catch(err => {
             console.log(err)
         })
-        
-    },[])
-    
-    useEffect(() => {
+
+
         getUserInfoByAnnonce(id,userId)
         .then(res => {
-          console.log("USER",res);
+         
           setUser(res.result[0]);
           setLastName(res.result[0].lastName);
           setPhone(res.result[0].phone);
@@ -83,30 +77,32 @@ const Detail = (props)=>{
         .catch(err => {
             console.log(err)
         })
-        
-    },[])
 
-    useEffect(() => {
         getLastTreeAdsByCat(categoryAds)
         .then(res => {
-          console.log("LAST",res);
-          setTreeAds(res.result);
-          setTitleTreeAds(res.result.title);
-          setDescriptionTreeAds(res.result.description);
-          setPriceTreeAds(res.result.price);
-          setImgTreeAds(res.result.imageUrl);
-       
+          console.log("LAST",res.ads);
+         
+          setTreeAds(res.ads);
+         
         })
         .catch(err => {
             console.log(err)
         })
+
+
         
     },[])
+    
+   
+
+  
 
     
 
 
     //affichage du posteur de l'annonce
+    console.log("LES TROIS ANNONCESS",treeAds); 
+   
     
     
   return (
@@ -121,10 +117,11 @@ const Detail = (props)=>{
               </div>
 		
 		  </header>
-<section className='sect_detail'>
-<article className='aside_photo_container'>
+ <div className='detail'>
+    <section className='sect_detail'>
+    <article className='aside_photo_container'>
 
-<div className='ads-card-detail'>
+      <div className='ads-card-detail'>
 
           <CloudinaryContext cloudName="dehjoundt">
            <div className='ads-card-detail'>
@@ -181,7 +178,7 @@ const Detail = (props)=>{
             </div>
             
     </div>
-  </article>
+   </article>
 
     <article className='article-detail-user'>
        <div className='detail_annonce'>
@@ -207,19 +204,51 @@ const Detail = (props)=>{
 
     </article>
 
-  </section>
+    </section>
+  <div>
+
+   <section className='sect_detail_adsim'>
+   {/*
+   
+   <div className='sectforcards'>
+					{treeAds.map((ad,index)=>{
+						return (
+							<div className='ads-card'>
+					<Link to={"/detail/" + ad.id}>
+					<CloudinaryContext cloudName="dehjoundt">
+					 <div className='ads-card-image'>
+					 <BsSearch  className='iconsearch'></BsSearch>
+					
+					 <Image publicId={ad.imageUrl1} className='imgsads'>
+			                <Transformation quality="auto" fetchFormat="auto" />
+			              </Image>
+			            </div>
+			         </CloudinaryContext>
+					 </Link>
+
+					 <span className='ads-card-date'>{moment(ad.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{ad.title}</p>
+								  <p className='ads-card-description'>{`${ad.description.substr(0, 80)} ...`}</p>
+								  <p className='slider-card-price'>{`${ad.price} €`}</p>
+								  <p className='ads-card-city'>{ad.city}</p>
+
+                     </div>
+						)
+					}
+					)}
+				</div>
+   
+   */}
+
+
+
       
+   </section>
 
-</main>
-   
-
-
+  </div>
+   </div>
+   </main>
   );
-
-    
-    
-    
-   
 }
+
 
 export default Detail

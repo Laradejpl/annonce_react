@@ -166,6 +166,21 @@ export const updateAnnonce = (datas, id) => {
         
     }
 
+    // avoir les 6 dernieres annonces
+    export const getLastSixAds = () => {
+        return axios.get(config.api_url + "/api/v1/ads/last")
+            .then(response => {
+                return response.data;
+              
+            }
+            )
+            .catch(error => {
+                return error;
+            }
+            );
+        
+    }
+
     
 
 
