@@ -17,12 +17,12 @@ const ReactCardSlider = (props) => {
 
     const slides =[
 
-        {image:image1,title:'Voillier',description:'Voillier bateau de plaisance sans moteur'},
-        {image:image2,title:'Monocoque',description:'Monocoque bateau sans moteur'},
+        {image:image1,title:'Voillier',description:'Voillier de plaisance sans moteur'},
+        {image:image2,title:'Monocoque',description:'Monocoque bateau'},
         {image:image3,title:'Jet ski',description:'Jet ski petit et gros cylindré'},
-        {image:image4,title:'Cabin cruiser',description:'Bateau de plaisance avec moteur et cabine'},
+        {image:image4,title:'Cabin cruiser',description:'Bateau cabine'},
         {image:image5,title:'Remorque',description:'Remorque bateau de plaisance'},
-        {image:image6,title:'Peniche',description:'Peniche bateau de plaisance'},
+        {image:image6,title:'Peniche',description:'Peniche '},
         {image:image7,title:'Moteur',description:'Moteur bateau de plaisance'}
     ];
     const sliderLeft = () => {
@@ -56,14 +56,19 @@ const ReactCardSlider = (props) => {
 
 
     return (
+     <div className='boxSlider'>
+
+     
+        <div className='prisonslider'>
+        <MdChevronLeft size={40} className='slider-icon left' onClick={sliderLeft}/>
+        <MdChevronRight size={40} className='slider-icon right' onClick={sliderRight}/>
+    </div>
 
            <div id="main-slider-container">
-                <div className='prisonslider'>
-                    <MdChevronLeft size={40} className='slider-icon left' onClick={sliderLeft}/>
-                    <MdChevronRight size={40} className='slider-icon right' onClick={sliderRight}/>
-                </div>
+               
                 <div className='title_slider_home'>
-			    <h3>Top catégories</h3>
+			    <h5>Top catégories</h5>
+                
                </div>
                     <div id="slider">
 
@@ -90,6 +95,7 @@ const ReactCardSlider = (props) => {
                         
                   
            </div>
+        </div>
 
        )
 }

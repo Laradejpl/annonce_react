@@ -169,7 +169,7 @@ h1{
   flex-direction:column;
   width: 100%;; 
   margin-left: auto;
-  margin-top: -50%;
+ 
   height: 900px;
 }
 .lastAds_container{
@@ -327,26 +327,7 @@ li{
 }
 
 
-.profil_aside{
-  float: left;
-  border: 2px solid rgb(239, 239, 239);
-  border-radius: 10px;
-  margin-top:5px ;
-  box-shadow: 5px 5px 5px rgb(225, 241, 249);
-  width: 10%;
-  margin-left: 5%;
-  
-}
-.profil_aside_cat{
-  
-  border: 2px solid rgb(239, 239, 239);
-  border-radius: 10px;
-  margin-top:123px ;
-  box-shadow: 5px 5px 5px rgb(225, 241, 249);
-  width: 10%;
-  margin-left: 5%;
 
-}
 .container_cat_inter{
 
   width: 100%;
@@ -390,11 +371,54 @@ li{
    text-decoration: none ;
    color: black;
    font-weight: bold;
+   font-size: 12px;
    
  }
 
 
+.conthome{
+  width:100%;
+  display: flex;
+  flex-direction:row;
 
+}
+.AdsHome1{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  margin-top: 8%;
+  margin-left: 5%;
+  
+ 
+}
+.AdsHome2{
+  width: 100%;
+  margin-top: 2%;
+  margin-left: -8%;
+
+}
+
+.profil_asides{
+  width: 100%;
+  border: 2px solid rgb(239, 239, 239);
+  border-radius: 10px;
+  margin-top:15px ;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  
+  margin-left: 5%;
+  
+}
+
+.profil_aside_cats{
+    width: 100%;
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 10px;
+    margin-top:15px ;
+    box-shadow: 5px 5px 5px rgb(225, 241, 249);
+    
+    margin-left: 5%;
+    
+}
 
 
 
