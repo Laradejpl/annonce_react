@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import {categorys} from '../helpers/category';
+
 import axios from 'axios';
 import '../temporary.css';
 
