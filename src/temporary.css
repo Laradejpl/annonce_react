@@ -1,0 +1,15 @@
+#MarkerImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    border: 2px solid rgb(10, 139, 238);
+}
+#mapSearch{
+    width: 80%;
+    height: 30vh;
+    border-radius: 10px;
+    border: 2px solid rgb(239, 239, 239);
+    box-shadow: 5px 5px 5px rgb(225, 241, 249);
+    margin: auto;
+    margin-top: 10px;
+}

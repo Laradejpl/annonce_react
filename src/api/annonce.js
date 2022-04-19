@@ -181,7 +181,18 @@ export const updateAnnonce = (datas, id) => {
         
     }
 
-    
+    // avoir une annonce par distance et categorie
+    export const getAdsByDistance = (datas) => {
+        return axios.post(config.api_url+'/api/v1/ads/distance', datas)
+        .then((response)=>{
+            return response.data
+        })
+        .catch((err)=>{
+            return err
+        })
+    }
+        
+  
 
 
 
