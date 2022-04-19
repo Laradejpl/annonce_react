@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-
+//@TODO mettre les icon sur les liens
 
 const Categories = (props)=>{
     

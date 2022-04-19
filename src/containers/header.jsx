@@ -76,7 +76,7 @@ const Header = (props)=>{
 
 
 			)}
-			<img src={hamburger} alt="logo" onClick={toggleNav} className="btn"/> 
+			<img src={hamburger} alt="logo" onClick={toggleNav} id="btn"/> 
 			    
 		</nav>
 	</div>

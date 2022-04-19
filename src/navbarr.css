@@ -30,7 +30,7 @@ nav {
     
 }
 
-.btn {
+#btn {
     display: none;
     position: absolute;
     right: 10px;
@@ -51,6 +51,7 @@ nav {
 
 
 @media screen and (max-width: 500px){
+    
 
     .list {
         flex-direction: column;
@@ -76,7 +77,7 @@ nav {
         display: block;
         
     }
-    .btn {
+    #btn {
         display: block;
         width: 40px;
         height: 40px;

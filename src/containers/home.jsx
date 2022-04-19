@@ -29,6 +29,23 @@ const Jetboat = (props) => {
 
      const [totalAds, setTotalAds] = useState(0);
 	   const [lastAds, setLastAds] = useState([]);
+	   const [toggleMenu, setToggleMenu] = useState(false)
+      const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+	
+	
+	  useEffect(() => {
+	
+		const changeWidth = () => {
+		  setScreenWidth(window.innerWidth);
+		}
+	
+		window.addEventListener('resize', changeWidth)
+	
+		return () => {
+			window.removeEventListener('resize', changeWidth)
+		}
+	
+	  }, [])
 
      	// le nombre total d'annonces
 	useEffect(()=>{
@@ -63,6 +80,7 @@ const Jetboat = (props) => {
           <h1 className='titlehome'>Bienvenues sur le Phare!</h1>
           <p>Ici vous trouverez votre dernier bijoux nautique ,</p>
         </header>
+		
         <div className='containr'>
                   <div className='totalAds'>{`Nous avons ${totalAds} Annonces`}</div>
                   <div className='searchBarhome'>
@@ -77,14 +95,16 @@ const Jetboat = (props) => {
   
         <section className='maincontent'>
 
-             <aside className='sideMenuHome'>
+		
+			 <div className='contversionHomeaside'>
 
-
-                     <Connected className='connAside'/>
-                     <Categories className='catAside'/>
-
-
-             </aside>  
+			             <aside className='profil_aside'>
+			                     <Connected/>
+			            </aside>
+		                <aside className='profil_aside_cats'>
+		                        <Categories/>
+		                </aside> 
+			 </div>
 
              <article className='MainArticleHome'>
               

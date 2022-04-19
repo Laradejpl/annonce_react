@@ -1,143 +1,114 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/pharelogo.png'
-import Connected from './connected';
-import Categories from './categories';
-import {Link} from 'react-router-dom';
-import '../home.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Select from 'react-select';
-import {getNbAds,getLastSixAds} from '../api/annonce';
-import ReactCardSlider from './ReactCardSlider';
+import jetskimg from '../assets/jetskii.png'
 import { BsSearch } from "react-icons/bs";
-import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
+import {Link} from 'react-router-dom';
 
+
+import {getAllAdsByCat,getNbAdsByCat} from '../api/annonce';
 import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
+    Image,
+    Video,
+    Transformation,
+    CloudinaryContext
+  } from "cloudinary-react";
+
 import moment from "moment";
-import localization from 'moment/locale/fr';
+import '../card.css';
 
-moment.updateLocale('fr', localization);
-
-
+moment.locale('fr');
 
 
 const Jetboat = (props) => {
 
-     const [totalAds, setTotalAds] = useState(0);
-	   const [lastAds, setLastAds] = useState([]);
 
-     	// le nombre total d'annonces
-	useEffect(()=>{
-		getNbAds()
-		.then((res)=>{
-			setTotalAds(res.result[0].total)
-		})
-		.catch((err)=>{
-			console.log(err);
-		})
 
-		getLastSixAds()
-		.then((res)=>{
-			console.log(res);
-			setLastAds(res.ads)
-		}
-		)
-		.catch((err)=>{
-			console.log(err);
-		}
-		)
+const [annonces, setAnnonces] = useState([]);
+const [totalAdsCat, setTotalAdsCat] = useState(0);
+
+
+
+
+let category = props.category;
+category="Jetboat";
+useEffect(()=>{
+	getAllAdsByCat(category)
+	.then((res)=>{
+		console.log(res);
+		setAnnonces(res.result)
 		
-			
-	},[])
 
-   
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+},[])
+useEffect(()=>{
+	
+},[annonces])
+
+// le nombre total d'annonces
+useEffect(()=>{
+	getNbAdsByCat(category)
+	.then((res)=>{
+		setTotalAdsCat(res.result[0].totalbyCategory)
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+	
+		
+		
+},[])
+
+
 
     return (
         <main className='main_home'>
-        <header className='homeheader'>
-        <img src={logo} alt="logo application" className="logohome"/>
-          <h1 className='titlehome'>Bienvenues sur le Phare!</h1>
-          <p>Ici vous trouverez votre dernier bijoux nautique ,</p>
-        </header>
-        <div className='containr'>
-                  <div className='totalAds'>{`Nous avons ${totalAds} Annonces`}</div>
-                  <div className='searchBarhome'>
-                    <input type="text" placeholder="Rechercher" className='searchBarInput'/>
-                    <button className='searchBarButton'><BsSearch/></button>
-                </div>
+		  <header className='homeheader'>
+		  <img src={jetskimg} alt="logo application" className="logohome"/>
+			<h1 className='titlehome'>Jetboat</h1>
+			<p>Plus qu'un bateau une monture puissante</p>
+		  </header>
+		  
+		  <div className='totalAds'>{`Nous avons ${totalAdsCat} Annonces`}</div>
+		  <h2> les meilleurs  Jetboat d'occasion</h2>
+		  <div className='divider'></div>
+		  <section className='sectforcards'>
 
-                <h5 className='lastAds_title'>Dernières Annonces</h5>
-                <div className='divider'></div>
-
-        </div>
-  
-        <section className='maincontent'>
-
-             <aside className='sideMenuHome'>
-
-
-                     <Connected className='connAside'/>
-                     <Categories className='catAside'/>
-
-
-             </aside>  
-
-             <article className='MainArticleHome'>
-              
-              
-
-                <section className='lastAds_secte'>
-				   <div className='sectforcardss'>
-					  {lastAds.map((ad,index)=>{
-						return (
-							<div className='ads-cardss'>
-					  <Link to={"/detail/" + ad.id}>
-					  <CloudinaryContext cloudName="dehjoundt">
-					   <div className='ads-card-image'>
-					   <BsSearch  className='iconsearch'></BsSearch>
+			{annonces.map((annonce, index) => {
+				return (
+                
+					<div className='ads-card'>
+					<Link to={"/detail/" + annonce.id}>
+					<CloudinaryContext cloudName="dehjoundt">
+					 <div className='ads-card-image'>
+					 <BsSearch  className='iconsearch'></BsSearch>
 					
-					    <Image publicId={ad.imageUrl1} className='imgsads'>
+					 <Image publicId={annonce.imageUrl1} className='imgsads'>
 			                <Transformation quality="auto" fetchFormat="auto" />
 			              </Image>
 			            </div>
 			         </CloudinaryContext>
-					   </Link>
+					 </Link>
 
-					   <span className='ads-card-date'>{moment(ad.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{ad.title}</p>
-								  <p className='ads-card-description'>{`${ad.description.substr(0, 80)} ...`}</p>
-								  <p className='slider-card-price'>{`${ad.price} €`}</p>
-								  <p className='ads-card-city'>{ad.city}</p>
+					 <span className='ads-card-date'>{moment(annonce.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{annonce.title}</p>
+								  <p className='ads-card-description'>{`${annonce.description.substr(0, 80)} ...`}</p>
+								  <p className='slider-card-price'>{`${annonce.price} €`}</p>
+								  <p className='ads-card-city'>{annonce.city}</p>
 
                      </div>
-						)
-					}
-					)}
-				</div>
-        <div id='bodys'>
-        <div className='divider'></div>
-                  <ReactCardSlider/>
-                  
-                </div>
-			          </section>
-
-               
-
-             </article>
-              
 
 
 
-
-
-        </section>
-
-    
-          
-      </main>
+				
+				)
+			})}
+		
+			</section>
+		
+		   
+			
+		</main>
     );
     }
     export default Jetboat;

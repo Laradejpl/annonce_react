@@ -229,7 +229,6 @@ h1{
 .aside_photo_container{
   width: 310px;
   margin-top: 1%;
-  
   border: 2px solid rgb(239, 239, 239);
   box-shadow: 5px 5px 5px rgb(225, 241, 249);
 }
@@ -398,32 +397,12 @@ li{
 
 }
 
-.profil_asides{
-  width: 100%;
-  border: 2px solid rgb(239, 239, 239);
-  border-radius: 10px;
-  margin-top:15px ;
-  box-shadow: 5px 5px 5px rgb(225, 241, 249);
-  
-  margin-left: 5%;
-  
-}
 
-.profil_aside_cats{
-    width: 100%;
-    border: 2px solid rgb(239, 239, 239);
-    border-radius: 10px;
-    margin-top:15px ;
-    box-shadow: 5px 5px 5px rgb(225, 241, 249);
-    
-    margin-left: 5%;
-    
-}
 
 
 
 @media screen and (max-width: 500px){
-
+  
   .mainHome{
     display: flex;
     flex-direction:column;
@@ -506,7 +485,7 @@ li{
   .connected_ul{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: auto;
@@ -515,31 +494,12 @@ li{
   }
   .profile_link{
     text-decoration: none !important;
+    font-size: 9px;
+    margin-right: 2px;
     
   }
 
-  .profil_aside{
-    
-    border: 2px solid rgb(239, 239, 239);
-    border-radius: 5px;
-    margin-top:5px ;
-    box-shadow: 5px 5px 5px rgb(225, 241, 249);
-    width: 90%;
-    margin-left: 5%;
-    padding:5px 0px !important;  
-    
-  }
-  .profil_aside_cat{
-  
-    border: 2px solid rgb(239, 239, 239);
-    border-radius: 5px;
-    margin-top:40px ;
-    box-shadow: 5px 5px 5px rgb(225, 241, 249);
-    width: 90%;
-    margin-left: 5%;
-    padding:5px 0px !important;
-  
-  }
+ 
   .buttonpost{
     margin-bottom: 10px !important;
   }
@@ -547,6 +507,46 @@ li{
 .cadreImg{
   margin-top: 5px;
   
+}
+.sect_detail{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+}
+
+.aside_photo_container{
+  width:80%;
+  margin-top: 1%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  margin-left: 10%;
+}
+.article-detail{
+  width:80%;
+  margin-top: 1%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  margin-left: 10%;
+
+}
+.article-detail-user{
+  border: 2px solid rgb(239, 239, 239);
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 5px;
+  margin-top: 1%;
+ 
+ 
 }
 
 
