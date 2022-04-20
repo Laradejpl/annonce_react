@@ -37,18 +37,7 @@ import {selectUser} from '../slices/userSlice';
 
             )}
 
-            <li><Link to="/Homesearch" className="profile_link">En France</Link></li>
-            {( screenWidth > 500) && (
-            <div className='divider'></div>
-
-            )}
-
-
-
-
-
-
-            
+           
             <li><Link to="/annonces" className="profile_link">Vos annonces  </Link></li>
             {( screenWidth > 500) && (
             <div className='divider'></div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import logo from '../assets/pharelogo.png'
 import Connected from './connected';
 import Categories from './categories';
@@ -55,11 +55,18 @@ const Jetboat = (props) => {
        const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 	   const [title, setTitle] = useState("")
 	   const [adsearch, setAdsearch] = useState([])
+       const searchingInput = useRef(null);
+	   const [KeywordValue, setKeywordValue] = useState("")
 
+	   const handleCurrentValue = () => {
+		   console.log("VALEUR DE INPUTss",searchingInput.current.value)
+		   setKeywordValue(searchingInput.current.value)
+	   }
 
 
 	   useEffect(()=>{
         mygeoloc()
+		handleCurrentValue()
     }, [position])
     
     const mygeoloc = ()=>{
@@ -131,8 +138,10 @@ const Jetboat = (props) => {
 		
 		getAdsByKeyword(data)
 		.then((res)=>{
-			console.log("KEYWORD :",res);
-			//setAdsearch(res)
+			console.log("KEYWORDs :",res.result);
+			setAdsearch(res.result)
+			//setKeywordValue(null)
+			console.log(adsearch[0].title);
 		})
 		.catch(err=>console.log(err))
 		
@@ -199,18 +208,18 @@ const Jetboat = (props) => {
 		
 			
 	},[])
-
+   
    
 
     return (
-    <main className='main_home'>
+       <main className='main_home'>
         <header className='homeheader'>
         <img src={logo} alt="logo application" className="logohome"/>
           <h1 className='titlehome'>Bienvenues sur le Phare!</h1>
           <p>Ici vous trouverez votre dernier bijoux nautique ,</p>
         </header>
 		
-        <div className='containr'>
+           <div className='containr'>
                   <div className='totalAds'>{`Nous avons ${totalAds} Annonces`}</div>
 				  {/*barre de recherche*/}
 				  <div className='search'>
@@ -219,6 +228,8 @@ const Jetboat = (props) => {
 								  <form onSubmit={(e)=>{e.preventDefault();
 								   searchForKeyword()}}>
 								  									<input type="text"
+																	  id='searchInputHome'
+																	  ref={searchingInput}
 																	   placeholder="Rechercher "
 																	    onChange={(e)=>setTitle(e.target.value)} />
 																	  <input type="submit"
@@ -298,7 +309,7 @@ const Jetboat = (props) => {
 		        </GoogleMapReact>
 		    </div>
 
-                <h5 className='lastAds_title'>Dernières Annonces</h5>
+                <h5 className='lastAds_title'> Les Dernières Annonces</h5>
                 <div className='divider'></div>
 
         </div>
@@ -322,11 +333,15 @@ const Jetboat = (props) => {
               
               
 
-                <section className='lastAds_secte'>
-				   <div className='sectforcardss'>
-					  {lastAds.map((ad,index)=>{
+            <section className='lastAds_secte'>
+
+				   {!KeywordValue ? (
+					   <>
+			  <div className='sectforcardss'>
+
+					  { lastAds.map((ad,index)=>{
 						return (
-							<div className='ads-cardss'>
+				<div className='ads-cardss'>
 					  <Link to={"/detail/" + ad.id}>
 					  <CloudinaryContext cloudName="dehjoundt">
 					   <div className='ads-card-image'>
@@ -344,11 +359,50 @@ const Jetboat = (props) => {
 								  <p className='slider-card-price'>{`${ad.price} €`}</p>
 								  <p className='ads-card-city'>{ad.city}</p>
 
-                     </div>
+                </div>
 						)
 					}
 					)}
-				</div>
+			 </div>
+				</>
+				   ) : (
+					<>
+					<div className='sectforcardss'>
+
+					  { adsearch.map((ads,index)=>{
+						return (
+				<div className='ads-cardss'>
+					  <Link to={"/detail/" + ads.id}>
+					  <CloudinaryContext cloudName="dehjoundt">
+					   <div className='ads-card-image'>
+					   <BsSearch  className='iconsearch'></BsSearch>
+					
+					    <Image publicId={ads.imageUrl} className='imgsads'>
+			                <Transformation quality="auto" fetchFormat="auto" />
+			              </Image>
+			            </div>
+			         </CloudinaryContext>
+					   </Link>
+
+					   <span className='ads-card-date'>{moment(ads.creationTimestamp).format("YYYY-MM-DD")}</span><p className='ads-card-title'>{ads.title}</p>
+								  <p className='ads-card-description'>{`${ads.description.substr(0, 80)} ...`}</p>
+								  <p className='slider-card-price'>{`${ads.price} €`}</p>
+								  <p className='ads-card-city'>{ads.city}</p>
+
+                </div>
+						)
+					}
+					)}
+			 </div>
+			 </>
+
+
+
+
+
+
+
+				   )}
         <div id='bodys'>
         <div className='divider'></div>
                   <ReactCardSlider/>

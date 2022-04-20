@@ -20,7 +20,7 @@ import Jetboat from './containers/jetboat';
 import Accessoires from './containers/accessoires';
 import Service from './containers/service';
 import ImagesAnnonces from './containers/imagesAnnonces';
-import Homesearch from './containers/homesearch';
+
 
 import {Routes, Route} from 'react-router-dom';
 import RequireAuth from './helpers/require-data-auth'
@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/accessoires" element={<RequireAuth child={Accessoires} auth={true}/>}/>
           <Route exact path="/service" element={<RequireAuth child={Service} auth={true}/>}/>
           <Route exact path="/imagesAnnonces/:id" element={<RequireAuth child={ImagesAnnonces} auth={true}/>}/>
-          <Route exact path="/homesearch" element={<RequireAuth child={Homesearch} auth={true}/>}/>
+          
         
         </Routes>
       </main>
