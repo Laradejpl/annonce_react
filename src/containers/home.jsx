@@ -10,7 +10,7 @@ import '../home.css';
 import '../temporary.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-import {getNbAds,getLastSixAds,getAdsByDistance} from '../api/annonce';
+import {getNbAds,getLastSixAds,getAdsByDistance,getAdsByKeyword} from '../api/annonce';
 import axios from 'axios';
 import ReactCardSlider from './ReactCardSlider';
 import { BsSearch } from "react-icons/bs";
@@ -50,8 +50,11 @@ const Jetboat = (props) => {
 	   const [radius, setRadius] = useState(5)
 	   const [adsLocalized, setAdsLocalized] = useState([])
 	   const [category, setCategory] = useState("")
+	   
 	   const [error, setError] = useState(null)
        const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+	   const [title, setTitle] = useState("")
+	   const [adsearch, setAdsearch] = useState([])
 
 
 
@@ -118,6 +121,22 @@ const Jetboat = (props) => {
         .catch(err=>console.log(err))
 		
     }
+
+	const searchForKeyword = () => {
+		
+		let data = {
+			keyWord:title
+			
+		}
+		
+		getAdsByKeyword(data)
+		.then((res)=>{
+			console.log("KEYWORD :",res);
+			//setAdsearch(res)
+		})
+		.catch(err=>console.log(err))
+		
+	}
     
     const createMarkers = ()=>{
         return adsLocalized.map((locals)=>{
@@ -193,9 +212,31 @@ const Jetboat = (props) => {
 		
         <div className='containr'>
                   <div className='totalAds'>{`Nous avons ${totalAds} Annonces`}</div>
+				  {/*barre de recherche*/}
+				  <div className='search'>
+					  <div className='search_containerHome'>
+					  			<div className='search_input'>
+								  <form onSubmit={(e)=>{e.preventDefault();
+								   searchForKeyword()}}>
+								  									<input type="text"
+																	   placeholder="Rechercher "
+																	    onChange={(e)=>setTitle(e.target.value)} />
+																	  <input type="submit"
+																	   className='searchBarButton'
+																	    />
+																	   
+								</form>									  
+								</div>									  
+
+				  </div>
+				  </div>
+
+												  	
+
+
                 <div className='searchBarhome'>
 				  <form
-				className="c-form"
+				className="c-form c-form--search"
 				onSubmit={(e)=>{
 					e.preventDefault();
 					onSubmitForm()
@@ -204,6 +245,7 @@ const Jetboat = (props) => {
 				<input 
 					type="text" 
 					placeholder="Tapez un adresse"
+					className='inputSearchHome'
 					onChange={(e)=>{
 						setAddress(e.currentTarget.value)
 					}}
@@ -236,7 +278,7 @@ const Jetboat = (props) => {
 						})
 					}
 				</select>
-				<input type="submit" name="Chercher"/>
+				<input type="submit" name="Chercher" className='mapBtn'/>
 			     </form> 
                 </div>
 

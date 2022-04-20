@@ -191,7 +191,17 @@ export const updateAnnonce = (datas, id) => {
             return err
         })
     }
-        
+
+    //avoir les annonces par keyword
+    export const getAdsByKeyword = (datas) => {
+        return axios.post(config.api_url+'/api/v1/ads/search' , datas)
+        .then((response)=>{
+            return response.data
+        })
+        .catch((err)=>{
+            return err
+        })
+    } 
   
 
 

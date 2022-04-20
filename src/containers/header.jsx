@@ -41,8 +41,8 @@ const Header = (props)=>{
            
 
 
-	<div >
-		<nav>
+	<div className='navcontaina' >
+		<nav className='navcontaina'>
 			{(toggleMenu || screenWidth > 500) && (
               <div className="list">
 				

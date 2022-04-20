@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .connected_header{
   display: flex;
 }
@@ -11,6 +12,9 @@
 .containa{
   width: 10%;
   margin: auto;
+}
+.search_containerHome{
+  margin-top:5px;
 }
 
 .logohome{
