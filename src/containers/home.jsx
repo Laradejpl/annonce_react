@@ -62,11 +62,12 @@ const Jetboat = (props) => {
 		   console.log("VALEUR DE INPUTss",searchingInput.current.value)
 		   setKeywordValue(searchingInput.current.value)
 	   }
+	   
+
 
 
 	   useEffect(()=>{
         mygeoloc()
-		handleCurrentValue()
     }, [position])
     
     const mygeoloc = ()=>{
@@ -130,6 +131,7 @@ const Jetboat = (props) => {
     }
 
 	const searchForKeyword = () => {
+		handleCurrentValue()
 		
 		let data = {
 			keyWord:title

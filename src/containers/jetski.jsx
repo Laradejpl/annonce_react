@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import jetskimg from '../assets/jetskii.png'
 import { BsSearch } from "react-icons/bs";
 import {Link} from 'react-router-dom';
-
-
 import {getAllAdsByCat,getNbAdsByCat} from '../api/annonce';
 import {
     Image,

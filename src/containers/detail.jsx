@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import {getOneAnnonce,getUserInfoByAnnonce,getLastTreeAdsByCat } from '../api/annonce';
-
 import logo from '../assets/pharelogo.png'
 import { BsSearch } from "react-icons/bs";
 import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
@@ -14,6 +13,7 @@ import {
 } from "cloudinary-react";
 import moment from "moment";
 import localization from 'moment/locale/fr';
+import Modal from '../components/Modal';
 
 moment.updateLocale('fr', localization);
 
@@ -38,6 +38,7 @@ const Detail = (props)=>{
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [city, setCity] = useState('');
+  const [openModal, setOpenModal] = useState(false);
   // pour les trois annonces similaires
     
     
@@ -108,6 +109,7 @@ const Detail = (props)=>{
   return (
     <main className="container">
 
+      <Modal open={openModal} />
       <header className='detailheader'>
 		           <img src={logo} alt="logo application" className="logohome"/>
                 <div className='bg_detail_header'>
@@ -117,6 +119,7 @@ const Detail = (props)=>{
               </div>
 		
 		  </header>
+
  <div className='detail'>
     <section className='sect_detail'>
     <article className='aside_photo_container'>
@@ -198,6 +201,8 @@ const Detail = (props)=>{
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
 
             </div>
+            <button onClick={()=> setOpenModal(true)}>Modal</button>
+            
             <div className='divider'></div>
 
        </div>
