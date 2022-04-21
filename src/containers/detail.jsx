@@ -96,20 +96,15 @@ const Detail = (props)=>{
     
    
 
-  
-
-    
-
-
     //affichage du posteur de l'annonce
-    console.log("LES TROIS ANNONCESS",treeAds); 
+    console.log("LES TROIS ANNONCES",treeAds); 
    
     
     
   return (
     <main className="container">
 
-      <Modal open={openModal} />
+      <Modal open={openModal} onClose={()=> setOpenModal(false)}/>
       <header className='detailheader'>
 		           <img src={logo} alt="logo application" className="logohome"/>
                 <div className='bg_detail_header'>
@@ -201,7 +196,7 @@ const Detail = (props)=>{
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
 
             </div>
-            <button onClick={()=> setOpenModal(true)}>Modal</button>
+            <button  className='modalBtn'  onClick={()=> setOpenModal(true)}>Modal</button>
             
             <div className='divider'></div>
 
