@@ -2,6 +2,9 @@
 
 .modalBtn{
     z-index: -1;
+    background-color: #0039d4;
+color: #ffffff;
+border-radius: 12px;
 
 }
 
@@ -41,7 +44,11 @@
     position:absolute;
     top: 8px;
     right: 8px;
+    
 
+}
+.bold{
+    font-weight: bold;
 }
 
 .modalContent{
@@ -69,10 +76,30 @@
 }
 .btnPrimary{
     background-color: #00bcd4;
+    border-radius: 10px;
 }
 .btnOutline{
    background-color: rgb(16, 116, 237);
+   border-radius: 10px;
 }
+
+.radioStarBtn{
+    display: none;
+    
+}
+.star{
+cursor: pointer;  
+transition: color 200ms;
+}
+
+.inputModal{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 90%;
+}
+
 
 
 @media screen and (max-width: 500px){

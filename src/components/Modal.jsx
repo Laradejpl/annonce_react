@@ -15,20 +15,16 @@ import StarRating from './StarRating'
             
             <div className="modalContent">
 
-                 <p>Voulez vous notez ce vendeur</p>
-                 <h3>une note entre 0 et 5</h3>
-                 <p>Donnez votre avis!</p>
+                
+                
+                 <h5>Donnez votre avis!</h5>
+                 <div className="divider"></div>
                  <form>
-                  {/* 
-                  <div className="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="text">1 star</label>
-                  </div>
-                   end rating star */}
-                   <StarRating />
+
+                 <input  className='inputModal' type="text" placeholder="titre de votre avis"/>
+                 <textarea  placeholder="votre avis"></textarea>
+                  
+                    <StarRating />
 
 
                  </form>
@@ -39,10 +35,10 @@ import StarRating from './StarRating'
             <div className='btnContainer'>
         <button className='btnPrimary'>
 
-            <span className='bold'>YES</span>, I love NFT's
+            <span className='bold'>NOTEZ</span>
       </button>
                <button className='btnOutline'>
-                     <span className='bold'>NO</span>, thanks
+                     <span className='bold'>NON</span>, Merci
               </button>
     </div>
           </div> 

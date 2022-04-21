@@ -196,7 +196,7 @@ const Detail = (props)=>{
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
 
             </div>
-            <button  className='modalBtn'  onClick={()=> setOpenModal(true)}>Modal</button>
+            <button  className='modalBtn'  onClick={()=> setOpenModal(true)}>votre avis</button>
             
             <div className='divider'></div>
 
