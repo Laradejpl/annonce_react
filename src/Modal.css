@@ -71,7 +71,7 @@ border-radius: 12px;
     border: none;
     color: #ffffff;
 }
-.btnContainer button:hover{
+.btnOutline:hover{
     background-color: #03343a;
 }
 .btnPrimary{
@@ -81,6 +81,9 @@ border-radius: 12px;
 .btnOutline{
    background-color: rgb(16, 116, 237);
    border-radius: 10px;
+   border: none;
+   width: 50%;
+   padding: 5px 0;
 }
 
 .radioStarBtn{

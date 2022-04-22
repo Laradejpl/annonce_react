@@ -24,7 +24,7 @@ import StarRating from './StarRating'
                  <input  className='inputModal' type="text" placeholder="titre de votre avis"/>
                  <textarea  placeholder="votre avis"></textarea>
                   
-                    <StarRating />
+                   { /*<StarRating /*/}
 
 
                  </form>

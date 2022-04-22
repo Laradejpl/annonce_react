@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import {getOneAnnonce,getUserInfoByAnnonce,getLastTreeAdsByCat } from '../api/annonce';
+import {getOneNote,getAllNotesByAnnonce,saveOneNote} from '../api/note';
 import logo from '../assets/pharelogo.png'
+import modalimg from '../assets/voilier.png'
 import { BsSearch } from "react-icons/bs";
+import { FaStar } from 'react-icons/fa';
 import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
+import '../Modal.css'
 
 import {
   Image,
@@ -13,7 +17,10 @@ import {
 } from "cloudinary-react";
 import moment from "moment";
 import localization from 'moment/locale/fr';
-import Modal from '../components/Modal';
+import {selectUser} from '../slices/userSlice';
+import {useDispatch,useSelector } from 'react-redux';
+
+
 
 moment.updateLocale('fr', localization);
 
@@ -21,11 +28,14 @@ const Detail = (props)=>{
     
 
     
-    
+  
+  const user = useSelector(selectUser)
+    const dispatch = useDispatch()
+   
   const id = props.params.id
   const [userId, setUserId] = useState(0);
   const [OneAd, setOneAd] = useState({});
-  const [user, setUser] = useState({});
+  const [userI, setUserI] = useState({});
   const [treeAds, setTreeAds] = useState([]);
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -39,10 +49,14 @@ const Detail = (props)=>{
   const [price, setPrice] = useState('');
   const [city, setCity] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  // pour les trois annonces similaires
-    
-    
-    
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+ 
+ 
+  const [connectUserId, setConnectUserId] = useState(null);
+  const [titleNote, setTitleNote] = useState('');
+  const [descriptionNote, setDescriptionNote] = useState('');
+
     
     useEffect(() => {
         getOneAnnonce(id)
@@ -69,10 +83,11 @@ const Detail = (props)=>{
         getUserInfoByAnnonce(id,userId)
         .then(res => {
          
-          setUser(res.result[0]);
+          setUserI(res.result[0]);
           setLastName(res.result[0].lastName);
           setPhone(res.result[0].phone);
           setPictureUser(res.result[0].imageUser);
+          setConnectUserId(res.result[0].id);
          
         })
         .catch(err => {
@@ -81,7 +96,7 @@ const Detail = (props)=>{
 
         getLastTreeAdsByCat(categoryAds)
         .then(res => {
-          console.log("LAST",res.ads);
+          //console.log("LAST",res.ads);
          
           setTreeAds(res.ads);
          
@@ -97,14 +112,43 @@ const Detail = (props)=>{
    
 
     //affichage du posteur de l'annonce
-    console.log("LES TROIS ANNONCES",treeAds); 
+    //console.log("LES TROIS ANNONCES",treeAds); 
+    const onSubmitForm = ()=>{
+
+      const data = {
+        note: rating,
+        id_annonce: id,
+        id_dunoteur: user.infos.id,
+        title_note: titleNote,
+        description: descriptionNote
+      }
+      saveOneNote(data)
+      console.log("ONT SAUVEGARDE",data)
+      .then((result)=>{
+        console.log('le résultat',result);
+        
+      }
+      )
+      .catch((err)=>{
+        console.log('erreur',err);
+      }
+      )
+
+
+}
+
+
+
+
+
+
    
     
     
   return (
     <main className="container">
 
-      <Modal open={openModal} onClose={()=> setOpenModal(false)}/>
+      
       <header className='detailheader'>
 		           <img src={logo} alt="logo application" className="logohome"/>
                 <div className='bg_detail_header'>
@@ -174,8 +218,56 @@ const Detail = (props)=>{
             <div className='iconNtext'>
                  <BsFillGeoFill style={{marginRight:5}}/><p className='citydetail'>{`l'annonce se situe: ${city}`}</p>
             </div>
+            <div className='divider'></div>
+            <div><h5> Si vous avez achetez cette article, noté ce vendeur</h5></div>
+            <form onSubmit={(e) => {
+                        e.preventDefault();
+                        onSubmitForm();
+                      }}>
+  
+               <input type="text" placeholder="Titre"  className='inputModal'   value={titleNote} onChange={(e) => setTitleNote(e.target.value)} />
+                       
+           
+                <textarea placeholder="Description"  className='inputModal'    value={descriptionNote} onChange={(e) => setDescriptionNote(e.target.value)} />
+                    
+                    
+                     <div>
+        
+           
+        {[...Array(5)].map((star,i) => {
+            const ratingValue = i + 1;
+            return (
+                <label>
+                    <input type="radio"
+                      className='radioStarBtn'
+                       name="rating" 
+                       value={ratingValue} 
+                       onClick={() => setRating(ratingValue)}
+                       
+                      
+                         />
+                    <FaStar color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                      className="star"
+                      size={50}
+                      onMouseEnter={() => setHover(ratingValue)}
+                      onMouseLeave={() => setHover(null)}
+                       />
+               
+                </label>
+                
+
+                
+            );
+        })}
+
+        <p> la note est de {rating}</p>
+</div>
+  <input type="submit" name="Enregister" className='btnOutline'/>
+  
+                   </form>
             
     </div>
+    <div className='divider'></div>
    </article>
 
     <article className='article-detail-user'>
