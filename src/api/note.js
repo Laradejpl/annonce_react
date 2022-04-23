@@ -16,3 +16,17 @@ export const saveOneNote = (datas) => {
         );
     
 }
+
+// avoir la moyenne des notes pour un user
+export const getAvgNotesByUser = (id) => {
+    return axios.get(config.api_url + '/api/v1/note/average/'+id)
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    
+}

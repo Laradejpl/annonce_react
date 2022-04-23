@@ -9,12 +9,11 @@ import GoogleMapReact from 'google-map-react';
 import '../home.css';
 import '../temporary.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Select from 'react-select';
 import {getNbAds,getLastSixAds,getAdsByDistance,getAdsByKeyword} from '../api/annonce';
 import axios from 'axios';
 import ReactCardSlider from './ReactCardSlider';
 import { BsSearch } from "react-icons/bs";
-import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
+
 
 import {
   Image,

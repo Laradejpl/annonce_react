@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import {getOneAnnonce,getUserInfoByAnnonce,getLastTreeAdsByCat } from '../api/annonce';
-import {getOneNote,getAllNotesByAnnonce,saveOneNote} from '../api/note';
+import {saveOneNote} from '../api/note';
 import logo from '../assets/pharelogo.png'
 import modalimg from '../assets/voilier.png'
 import { BsSearch } from "react-icons/bs";
@@ -36,6 +36,7 @@ const Detail = (props)=>{
    
   const id = props.params.id
   const [userId, setUserId] = useState(0);
+  const [idPosteur, setIdPosteur] = useState(0);
   const [OneAd, setOneAd] = useState({});
   const [userI, setUserI] = useState({});
   const [treeAds, setTreeAds] = useState([]);
@@ -56,6 +57,7 @@ const Detail = (props)=>{
   const [msg, setMsg] = useState('');
  
  
+ 
   const [connectUserId, setConnectUserId] = useState(null);
   const [titleNote, setTitleNote] = useState('');
   const [descriptionNote, setDescriptionNote] = useState('');
@@ -74,6 +76,7 @@ const Detail = (props)=>{
           setPrice(res.result.price);
           setCity(res.result.city);
           setCategoryAds(res.result.category);
+          setIdPosteur(res.result.user_id);
 
         
           
@@ -96,6 +99,7 @@ const Detail = (props)=>{
         .catch(err => {
             console.log(err)
         })
+     
 
         getLastTreeAdsByCat(categoryAds)
         .then(res => {
@@ -108,9 +112,10 @@ const Detail = (props)=>{
             console.log(err)
         })
 
-
         
     },[])
+
+   
     
    const showModal = () => {
     setOpenModal(true);
@@ -126,7 +131,8 @@ const Detail = (props)=>{
         id_annonce: id,
         id_dunoteur: user.infos.id,
         title_note: titleNote,
-        description: descriptionNote
+        description: descriptionNote,
+        id_posteur: idPosteur
       }
       saveOneNote(data)
       //console.log("ONT SAUVEGARDE",data)
@@ -334,26 +340,9 @@ return (
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
 
             </div>
-            <div>
-            {[...Array(5)].map((star,i) => {
-            const ratingValue = i + 1; 
-            return (
-                <label>
-                   
-                    <FaStar color={ratingValue <= (rating) ? "#ffc107" : "#e4e5e9"}
-                      className="star"
-                      size={20}
-                     
-                       />
-               
-                </label>
-                
-
-                
-            );
-        })}
-            </div>
-            <button  className='modalBtn' onClick={()=> setOpenModal(true) }>Voir son profil</button>
+           
+            
+            <Link to={`/posteur/${idPosteur}/`} className='modalBtn'>Voir Voir son profil</Link>
             
             <div className='divider'></div>
 

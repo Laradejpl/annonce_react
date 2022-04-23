@@ -2,8 +2,8 @@
 
 .modalBtn{
     z-index: -1;
-    background-color: #0039d4;
-color: #ffffff;
+   
+color: #575757;
 border-radius: 12px;
 
 }
@@ -124,6 +124,7 @@ transition: color 200ms;
 
     .closeBtn{
        color: #ffffff;
+
     }
 
 }
