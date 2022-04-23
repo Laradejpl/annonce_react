@@ -9,6 +9,8 @@ import { FaStar } from 'react-icons/fa';
 import { BsFillGeoFill,BsFillCreditCardFill,BsTelephoneFill } from "react-icons/bs";
 import '../Modal.css'
 
+//import Modal from '../components/Modal';
+
 import {
   Image,
   Video,
@@ -51,6 +53,7 @@ const Detail = (props)=>{
   const [openModal, setOpenModal] = useState(false);
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const [msg, setMsg] = useState('');
  
  
   const [connectUserId, setConnectUserId] = useState(null);
@@ -109,7 +112,10 @@ const Detail = (props)=>{
         
     },[])
     
-   
+   const showModal = () => {
+    setOpenModal(true);
+    
+  };
 
     //affichage du posteur de l'annonce
     //console.log("LES TROIS ANNONCES",treeAds); 
@@ -123,20 +129,57 @@ const Detail = (props)=>{
         description: descriptionNote
       }
       saveOneNote(data)
-      console.log("ONT SAUVEGARDE",data)
-      .then((result)=>{
-        console.log('le résultat',result);
-        
+      //console.log("ONT SAUVEGARDE",data)
+      .then((res)=>{
+
+        if(res.status === 200){
+       
+        console.log('le résultat',res);
+        setMsg('Vous avez notez le vendeur.');
+        showModal();
+        }else{
+          console.log('le résultat',res);
+          setMsg('Vous avez déja notez le vendeur.');
+          console.log(msg);
+        }
       }
       )
       .catch((err)=>{
         console.log('erreur',err);
+       
       }
       )
 
 
 }
+//Modal
 
+const Modal = ({open,onClose}) => {
+
+  if(!open) return null  
+return (
+  <div onClick={onClose} className='overlay'>
+      <div onClick={(e)=>{e.stopPropagation()}} 
+       className='modalContainer'>
+          <img className='imgModal' src={modalimg} alt=".. " />
+        <div  className="modalRight">
+         <p onClick={onClose} className='closeBtn'>X</p>
+          
+          <div className="modalContent">
+
+               <h5>Message</h5>
+               <div className="divider"></div>
+               <p>{msg}</p>
+                
+
+
+          </div>
+    
+        </div> 
+      </div>
+  </div>
+)
+}
 
 
 
@@ -148,7 +191,7 @@ const Detail = (props)=>{
   return (
     <main className="container">
 
-      
+      <Modal open={openModal} onClose={()=> setOpenModal(false)} />  
       <header className='detailheader'>
 		           <img src={logo} alt="logo application" className="logohome"/>
                 <div className='bg_detail_header'>
@@ -218,7 +261,9 @@ const Detail = (props)=>{
             <div className='iconNtext'>
                  <BsFillGeoFill style={{marginRight:5}}/><p className='citydetail'>{`l'annonce se situe: ${city}`}</p>
             </div>
+           
             <div className='divider'></div>
+            <div><h6> {msg}</h6></div>
             <div><h5> Si vous avez achetez cette article, noté ce vendeur</h5></div>
             <form onSubmit={(e) => {
                         e.preventDefault();
@@ -234,8 +279,8 @@ const Detail = (props)=>{
                      <div>
         
            
-        {[...Array(5)].map((star,i) => {
-            const ratingValue = i + 1;
+       {[...Array(5)].map((star,i) => {
+            const ratingValue = i + 1; 
             return (
                 <label>
                     <input type="radio"
@@ -262,12 +307,13 @@ const Detail = (props)=>{
 
         <p> la note est de {rating}</p>
 </div>
-  <input type="submit" name="Enregister" className='btnOutline'/>
+  <input type="submit" name="Enregister" className='btnOutline' />
   
                    </form>
             
     </div>
     <div className='divider'></div>
+  
    </article>
 
     <article className='article-detail-user'>
@@ -288,7 +334,26 @@ const Detail = (props)=>{
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
 
             </div>
-            <button  className='modalBtn'  onClick={()=> setOpenModal(true)}>votre avis</button>
+            <div>
+            {[...Array(5)].map((star,i) => {
+            const ratingValue = i + 1; 
+            return (
+                <label>
+                   
+                    <FaStar color={ratingValue <= (rating) ? "#ffc107" : "#e4e5e9"}
+                      className="star"
+                      size={20}
+                     
+                       />
+               
+                </label>
+                
+
+                
+            );
+        })}
+            </div>
+            <button  className='modalBtn' onClick={()=> setOpenModal(true) }>Voir son profil</button>
             
             <div className='divider'></div>
 

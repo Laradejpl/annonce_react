@@ -1,9 +1,10 @@
 import React from 'react'
 import modalimg from '../assets/voilier.png'
 import '../Modal.css'
-import StarRating from './StarRating'
+
 
  const Modal = ({open,onClose}) => {
+
     if(!open) return null  
   return (
     <div onClick={onClose} className='overlay'>
@@ -17,30 +18,14 @@ import StarRating from './StarRating'
 
                 
                 
-                 <h5>Donnez votre avis!</h5>
+                 <h5>Message</h5>
                  <div className="divider"></div>
-                 <form>
-
-                 <input  className='inputModal' type="text" placeholder="titre de votre avis"/>
-                 <textarea  placeholder="votre avis"></textarea>
-                  
-                   { /*<StarRating /*/}
-
-
-                 </form>
+                 <p>vous avez bien enregistrez votre note</p>
                   
 
 
             </div>
-            <div className='btnContainer'>
-        <button className='btnPrimary'>
-
-            <span className='bold'>NOTEZ</span>
-      </button>
-               <button className='btnOutline'>
-                     <span className='bold'>NON</span>, Merci
-              </button>
-    </div>
+      
           </div> 
         </div>
     </div>
