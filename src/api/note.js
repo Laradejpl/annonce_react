@@ -30,3 +30,17 @@ export const getAvgNotesByUser = (id) => {
         );
     
 }
+
+ // avoir toutes les notes d'un user
+export const getAllNotesByUser = (id) => {
+    return axios.get(config.api_url + '/api/v1/note/user/'+id)
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    
+}

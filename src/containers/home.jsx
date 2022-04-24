@@ -214,11 +214,13 @@ const Jetboat = (props) => {
 
     return (
        <main className='main_home'>
+	  
         <header className='homeheader'>
         <img src={logo} alt="logo application" className="logohome"/>
           <h1 className='titlehome'>Bienvenues sur le Phare!</h1>
           <p>Ici vous trouverez votre dernier bijoux nautique ,</p>
         </header>
+		
 		
            <div className='containr'>
                   <div className='totalAds'>{`Nous avons ${totalAds} Annonces`}</div>
@@ -342,6 +344,7 @@ const Jetboat = (props) => {
 
 					  { lastAds.map((ad,index)=>{
 						return (
+						
 				<div className='ads-cardss'>
 					  <Link to={"/detail/" + ad.id}>
 					  <CloudinaryContext cloudName="dehjoundt">
@@ -361,6 +364,8 @@ const Jetboat = (props) => {
 								  <p className='ads-card-city'>{ad.city}</p>
 
                 </div>
+			
+
 						)
 					}
 					)}

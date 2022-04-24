@@ -21,6 +21,7 @@ import moment from "moment";
 import localization from 'moment/locale/fr';
 import {selectUser} from '../slices/userSlice';
 import {useDispatch,useSelector } from 'react-redux';
+import Fade from 'react-reveal/Fade';
 
 
 
@@ -55,12 +56,14 @@ const Detail = (props)=>{
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [msg, setMsg] = useState('');
+
  
  
  
   const [connectUserId, setConnectUserId] = useState(null);
   const [titleNote, setTitleNote] = useState('');
   const [descriptionNote, setDescriptionNote] = useState('');
+  const [note, setNote] = useState(null);
 
     
     useEffect(() => {
@@ -94,6 +97,7 @@ const Detail = (props)=>{
           setPhone(res.result[0].phone);
           setPictureUser(res.result[0].imageUser);
           setConnectUserId(res.result[0].id);
+          setNote(res.result[0].note);
          
         })
         .catch(err => {
@@ -338,6 +342,7 @@ return (
             <h3 className='titledet'>{lastName}</h3>
             <div className='iconNtext'>
             <BsTelephoneFill  style={{marginRight:5,fontSize:10}}/> <p className='descdetail'>{phone}</p>
+          
 
             </div>
            
