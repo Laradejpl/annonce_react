@@ -347,7 +347,7 @@ return (
             </div>
            
             
-            <Link to={`/posteur/${idPosteur}/`} className='modalBtn'>Voir Voir son profil</Link>
+            <Link to={`/posteur/${idPosteur}/`} className='modalBtn'>Voir son profil</Link>
             
             <div className='divider'></div>
 
