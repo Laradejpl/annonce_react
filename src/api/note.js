@@ -44,3 +44,17 @@ export const getAllNotesByUser = (id) => {
         );
     
 }
+
+// delete une note
+export const deleteOneNote = (id) => {
+    return axios.delete(config.api_url + '/api/v1/note/delete/one/'+id)
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    
+}

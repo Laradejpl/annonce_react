@@ -359,6 +359,7 @@ li{
 }
 
  #profilImg{
+   width: 200px !important;
   border: 2px solid rgb(239, 239, 239);
   border-radius: 10px;
   margin-top:80px ;
@@ -426,10 +427,24 @@ li{
 }
 .mainContainerPoster{
   width: 80%;
+  height: 100%;
   display: flex;
   margin: auto;
-  
+  margin-bottom: 200px;
+
+}
+
+.pubmarine{
+
+  margin-left:2%;
  
+  max-height: 55%;
+  margin-top:10%;
+}
+.controwposter{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
  
 }
 .secondContainerPoster{
@@ -467,6 +482,8 @@ li{
   border-radius: 10px;
   border: 1px solid rgb(234, 234, 234);
   width: 100%;
+  background-color: #ffffff;
+  z-index: 2;
  
 }
 .ads-card-detail-infouser{
@@ -487,9 +504,41 @@ li{
  
 }
 
+.asideposterpub{
+  display: flex;
+  flex-direction: column;
+}
+
 
 .info_poster_phone{
   font-size: 12px;
+}
+
+.containerCardwEdition{
+  width: 100%;
+  display: flex;
+ 
+ 
+  flex-direction: row;
+  
+ 
+ 
+}
+.EditionPalette{
+  display: flex;
+  flex-direction: row;
+  margin-left: 1%;
+  box-shadow: 5px 5px 5px rgb(225, 241, 249);
+  padding: 10px;
+  border-radius: 10px;
+  
+}
+.iconEdt{
+  width: 20px;
+  height: 20px;
+  margin:auto;
+  border: 2px solid rgb(239, 239, 239);
+  
 }
 @media screen and (max-width: 500px){
   
@@ -681,7 +730,9 @@ li{
   
   
 }
-
+.pubmarine{
+ display: none;
+}
 
 }
 

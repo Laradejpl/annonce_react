@@ -204,6 +204,17 @@ export const updateAnnonce = (datas, id) => {
     } 
   
 
-
+// effacer une annonce par id
+export const deleteAd = (id) => {
+    return axios.delete(config.api_url + "/api/v1/ads/delete/one/" + id)
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    }
 
 

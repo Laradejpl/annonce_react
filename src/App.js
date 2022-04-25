@@ -20,7 +20,8 @@ import Jetboat from './containers/jetboat';
 import Accessoires from './containers/accessoires';
 import Service from './containers/service';
 import ImagesAnnonces from './containers/imagesAnnonces';
-import Posteur from './containers/posteur'
+import Posteur from './containers/posteur';
+import Annonce from './containers/annonces';
 
 
 import {Routes, Route} from 'react-router-dom';
@@ -51,6 +52,7 @@ function App() {
           <Route exact path="/service" element={<RequireAuth child={Service} auth={true}/>}/>
           <Route exact path="/imagesAnnonces/:id" element={<RequireAuth child={ImagesAnnonces} auth={true}/>}/>
           <Route exact path="/posteur/:id" element={<RequireAuth child={Posteur} auth={true}/>}/>
+          <Route exact path="/annonces" element={<RequireAuth child={Annonce} auth={true}/>}/>
           
         
         </Routes>
