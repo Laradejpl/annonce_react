@@ -37,11 +37,13 @@ const Posteur = (props) => {
     const [titleValue, setTitleValue] = useState("Toutes ces annonces");
     const [allNotes, setAllNotes] = useState([]);
     const[weather,setWeather] = useState({});
-    const [detailWeather,setDetailWeather] = useState({});
     const [city, setCity] = useState('');
-    const [sysWeather, setSysWeather] = useState({});
     const user = useSelector(selectUser)
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(true);
+    const [icone, setIcone] = useState('');
+    const [urlOfWeather, setUrlOfWeather] = useState('');
+    //const iconUrl = "http://openweathermap.org/img/w/" + icone + ".png"
+    const iconUrl = "http://openweathermap.org/img/w/"
 
     const apiKey = "391e323b0497a6560ceb8c50c68a01e3";
     
@@ -49,6 +51,9 @@ const Posteur = (props) => {
   
 
    useEffect(() => {
+    const town=  user.infos.city
+    setCity(town);
+
     getOneUser(id).then(res => {
         setPosteur(res.result)
         console.log(res.result);
@@ -63,6 +68,20 @@ const Posteur = (props) => {
         setAdsByUser(res.result);
         console.log(res.result);
     })
+    
+    // avoir la météo pour les navigateurs par api openweathermap
+    
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${town}&appid=${apiKey}&units=metric`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+        setWeather(data);
+        setIcone(data.weather[0].icon);
+        //setUrlOfWeather(iconUrl);
+        console.log( "WEATHER",weather);
+        setError(false);
+    })
 
     
 
@@ -70,9 +89,7 @@ const Posteur = (props) => {
    } , [])
 
 
-   useEffect(() => {
-  
-  }, [])
+ 
 
    const loadAvis = () => {
      
@@ -94,54 +111,18 @@ const Posteur = (props) => {
     setAvisAffichage(false);
     setTitleValue("Toutes ces annonces");
   }
- /*
-  const getWeather = () => {
-  
-    setCity(user.infos.city);
-    console.log( "LA CITY",user.infos.city);
 
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-    .then(res => {
-        console.log("TIMES",res.data);
-        setWeather(res.data);
-        setDetailWeather(res.data.main);
-        //setSysWeather(res.data[3]);
-    })
-    .catch(err => {
-        console.log(err);
-        setError(true);
 
-    })
-  }
-  
     
     
-    
-    
-   
-    
-    const city =  user.infos.city
-    setCity(city);
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      setWeather(data);
-      console.log("LE TEMPS",data);
-    })
-    .catch(err => console.log(err));
     
   
+
   
 
 
-  useEffect(() => {
 
-     getWeather();
-
-  }, [user])
-
-  */
+ 
 
   return (
     <div>
@@ -290,18 +271,37 @@ const Posteur = (props) => {
 
        <article className='containar'>
 
-       {/*avoir le weather  de city*/}
-       {!error && <div className='weather'>
-         {city} 
-          <div className='weather-info'>
-          
-          <h5>{weather.main}</h5>
-          <p>{weather.description}</p>
-         
-          <p>{Math.round(detailWeather.temp)} °C</p>
-          </div>
+       {/*avoir le weather  de city */}
 
-        </div>} 
+    
+       {!error &&  
+       
+        <div className='weather'>
+        <div className='weather_img'>
+        {!error && 
+        <img src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="logo application" className="weather_img"/>}
+        </div>
+        <div className='weather_info'>
+        <h3>{weather.name} | {weather.sys.country}</h3>
+        <p>{weather.weather[0].description}</p>
+        <p>{weather.main.temp}°C</p>
+        </div>
+        </div>
+       
+       
+       
+       
+       
+       
+       }
+       
+
+  
+        
+
+       
+       
+       
         
        
         
