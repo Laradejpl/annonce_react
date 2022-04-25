@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import pub from '../assets/pubmarine.jpg'
 import { BsSearch } from "react-icons/bs";
 import { FaStar } from 'react-icons/fa';
+import { FiWind} from 'react-icons/fi';
 import {getAllAdsByUser } from '../api/annonce';
 import {getAvgNotesByUser,getAllNotesByUser} from '../api/note';
 import {getOneUser} from '../api/user';
@@ -12,12 +13,14 @@ import {
     Transformation,
     CloudinaryContext
   } from "cloudinary-react";
-import { BsFillGeoFill,BsTelephoneFill } from "react-icons/bs";
+import { BsFillGeoFill,BsTelephoneFill,BsCloudy } from "react-icons/bs";
 import { IoIosApps,IoMdBoat } from "react-icons/io";
 import {selectUser} from '../slices/userSlice';
 import {useDispatch,useSelector } from 'react-redux'; 
 import axios from 'axios';
 import Fade from 'react-reveal/Fade';
+import {WiCloud,WiRaindrop,WiThermometer} from "react-icons/wi";
+import { ImOffice } from "react-icons/im";
 import moment from "moment";
 import localization from 'moment/locale/fr';
 moment.updateLocale('fr', localization);
@@ -136,6 +139,30 @@ const Posteur = (props) => {
     </ul>
 
     <div className='divider'></div>
+    {!error &&  
+       
+       <div className='weather'>
+       <div className='weather_info'>
+      <h5>{weather.name} | {weather.sys.country}</h5> 
+       <p><WiThermometer />{weather.main.temp}°C</p>
+       </div>
+       <div className='iconeNdescWeather'>
+
+        <div className='weather_img'>
+         {!error && 
+          <img src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="logo application" className="weather_img"/>}
+       </div>
+          <p><BsCloudy /> {weather.weather[0].description}</p>
+          <p><FiWind /> {`${weather.wind.speed} m/s`}</p>
+
+
+       </div>
+
+
+       </div>
+     
+      
+      }
     <div className='controwposter'>
      <section className='mainContainerPoster'>
        <section className='secondContainerPoster'>
@@ -271,40 +298,8 @@ const Posteur = (props) => {
 
        <article className='containar'>
 
-       {/*avoir le weather  de city */}
-
     
-       {!error &&  
        
-        <div className='weather'>
-        <div className='weather_img'>
-        {!error && 
-        <img src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="logo application" className="weather_img"/>}
-        </div>
-        <div className='weather_info'>
-        <h3>{weather.name} | {weather.sys.country}</h3>
-        <p>{weather.weather[0].description}</p>
-        <p>{weather.main.temp}°C</p>
-        </div>
-        </div>
-       
-       
-       
-       
-       
-       
-       }
-       
-
-  
-        
-
-       
-       
-       
-        
-       
-        
 
 
        </article>
