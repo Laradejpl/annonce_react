@@ -22,6 +22,7 @@ import Service from './containers/service';
 import ImagesAnnonces from './containers/imagesAnnonces';
 import Posteur from './containers/posteur';
 import Annonce from './containers/annonces';
+import Edityourads from './containers/edityourads'
 
 
 import {Routes, Route} from 'react-router-dom';
@@ -53,6 +54,7 @@ function App() {
           <Route exact path="/imagesAnnonces/:id" element={<RequireAuth child={ImagesAnnonces} auth={true}/>}/>
           <Route exact path="/posteur/:id" element={<RequireAuth child={Posteur} auth={true}/>}/>
           <Route exact path="/annonces" element={<RequireAuth child={Annonce} auth={true}/>}/>
+          <Route exact path="/edityourads/:id" element={<RequireAuth child={Edityourads} auth={true}/>}/>
           
         
         </Routes>

@@ -139,6 +139,7 @@ const Posteur = (props) => {
     </ul>
 
     <div className='divider'></div>
+    {/*WIDGET méteo*/}
     {!error &&  
        
        <div className='weather'>
@@ -163,6 +164,7 @@ const Posteur = (props) => {
      
       
       }
+      {/*FIN WIDGET méteo*/}
     <div className='controwposter'>
      <section className='mainContainerPoster'>
        <section className='secondContainerPoster'>
