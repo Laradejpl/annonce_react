@@ -71,8 +71,6 @@ moment.locale("fr");
                                   imageUrl2: picture[2],
                                   id:id
                                
-                      
-                      
                               }
                              
       
@@ -80,15 +78,7 @@ moment.locale("fr");
                               updateImages(datas)
                                 .then((res)=>{
                                   if(res.status === 200){
-                                    /*
-                                      getOneAnnonce(params.id)
-                                      .then((response)=>{
-                                          
-                                          let myAnnonce = response.result
-                                          dispatch(loadUserAnnonces(myAnnonce))
-                                         
-                                          setImg(response.result.imageUrl)
-                                      })*/
+                                 
                                       setImg(annonce.annonce.imageUrl)
                                       setMsg("Vous avez bien ajouté vos images")
                                   }else{
@@ -208,7 +198,7 @@ moment.locale("fr");
                                             showWidget();
                                           }}
                                       >
-                                          Ajoutez des images a votre annonces
+                                          Modifiez les images de votre annonce
                                       </button>
                                 <input 
                                   type="text" 

@@ -19,6 +19,18 @@ export const saveOneAds = (datas) => {
     
 }
 
+//avoir toutes les annonces
+export const getAllAds = () => {
+    return axios.get(config.api_url + "/api/v1/ads")
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+}
 
 
 

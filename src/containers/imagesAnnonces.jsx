@@ -69,15 +69,7 @@ const ImagesAnnonces = (props)=>{
                         updateImages(datas)
                           .then((res)=>{
                             if(res.status === 200){
-                              /*
-                                getOneAnnonce(params.id)
-                                .then((response)=>{
-                                	
-                                    let myAnnonce = response.result
-                                    dispatch(loadUserAnnonces(myAnnonce))
-                                   
-                                    setImg(response.result.imageUrl)
-                                })*/
+                            
                                 setImg(annonce.annonce[0].imageUrl)
                                 setMsg("Vous avez bien ajouté voss images")
                             }else{

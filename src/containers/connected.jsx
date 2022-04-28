@@ -10,6 +10,7 @@ import {selectUser} from '../slices/userSlice';
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const user = useSelector(selectUser)
+    const [admin, setAdmin] = useState('')
 
 
 
@@ -43,7 +44,9 @@ import {selectUser} from '../slices/userSlice';
             <div className='divider'></div>
 
             )}
-            <li><Link to="/admin" className="profile_link">admin</Link></li>
+            {( user.infos.role === "admin") && (
+            <li><Link to="/admin" className="profile_link">Admin</Link></li>
+             ) }
            
           
         </ul>
