@@ -3,7 +3,7 @@ import logo from '../assets/pharelogo.png'
 import Connected from './connected';
 import Categories from './categories';
 import {categorys} from '../helpers/category';
-
+import { capitalize,recupFirstCapitalLetter } from '../helpers/toolbox'
 import {Link} from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import '../home.css';
@@ -13,6 +13,8 @@ import {getNbAds,getLastSixAds,getAdsByDistance,getAdsByKeyword} from '../api/an
 import axios from 'axios';
 import ReactCardSlider from './ReactCardSlider';
 import { BsSearch } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import {selectUser} from '../slices/userSlice';
 
 
 import {
@@ -56,6 +58,9 @@ const Jetboat = (props) => {
 	   const [adsearch, setAdsearch] = useState([])
        const searchingInput = useRef(null);
 	   const [KeywordValue, setKeywordValue] = useState("")
+	   const user = useSelector(selectUser)
+	   const [initialUser, setInitialUser] = useState("")
+	   
 
 	   const handleCurrentValue = () => {
 		   console.log("VALEUR DE INPUTss",searchingInput.current.value)
@@ -209,6 +214,64 @@ const Jetboat = (props) => {
 		
 			
 	},[])
+
+	useEffect(()=>{
+		recupFirstCapitalLetter(user.infos.firstName)
+		setInitialUser(recupFirstCapitalLetter(user.infos.firstName))
+		console.log("INITIALUSER",initialUser);
+
+	},[])
+
+	
+
+	const Submenu = (props) => {
+		return (
+		  <div className='nav_Sub_menu'>
+			  {/* sous menu comprenant des boutons : annonces,category,user,avis */}
+			<ul className='Sbul_menus'>
+			<li className='Sbli_menu'>
+			  <Link to="/profil" className="link_submenu_firstLetter">{ capitalize(initialUser)}</Link>
+        </li>
+			<div className='dropdown'>
+			  <li className='Sbli_menu'>
+				Gatégorie
+				<ul className='dropdown-content'>
+				
+				 {categorys.map((category, index) => (
+					 <div>
+	  
+					 
+				   
+					   <li className='catSubli' key={index}>
+					   <Link to={`/${category}`} className='link_submenu'>{category}</Link>
+	   
+					   </li>
+						  <div className='divider_Admin'></div>
+					</div>
+				   
+				  ))}
+	  
+				</ul>
+	  
+			  </li>
+			  </div>
+		
+		{( user.infos.role === "admin") && (
+        <li className='Sbli_menu'>
+            <li><Link to="/admin" className="link_submenu">Admin</Link></li>
+        </li>
+             ) }
+
+			 <li>
+
+				<Link to="/annonces" className="link_submenu">Annonces</Link>
+			 </li>
+			 
+			</ul>
+	  
+		  </div>
+		)
+	  }
    
    
 
@@ -313,6 +376,17 @@ const Jetboat = (props) => {
 		    </div>
 
                 <h5 className='lastAds_title'> Les Dernières Annonces</h5>
+				{( screenWidth < 500) && (
+				       <div className='divider'></div>
+				)}
+				{( screenWidth < 500) && (
+					
+					<div className='cont_submenu'>
+				       <Submenu />
+					</div>
+
+					
+				)}
                 <div className='divider'></div>
 
         </div>
@@ -323,13 +397,17 @@ const Jetboat = (props) => {
 
 		
 			 <div className='contversionHomeaside'>
-
+			 {( screenWidth > 500) && (
 			             <aside className='profil_aside'>
 			                     <Connected/>
-			            </aside>
+			            </aside>)}
+
+						{( screenWidth > 500) && (
+						
 		                <aside className='profil_aside_cats'>
 		                        <Categories/>
 		                </aside> 
+			 )}
 			 </div>
 
              <article className='MainArticleHome'>

@@ -45,6 +45,19 @@ export const getAllNotesByUser = (id) => {
     
 }
 
+ // avoir toutes les notes 
+export const getAllNotes = () => {
+    return axios.get(config.api_url + '/api/v1/note')
+        .then(response => {
+            return response.data;
+        }
+        )
+        .catch(error => {
+            return error;
+        }
+        );
+    }
+
 // delete une note
 export const deleteOneNote = (id) => {
     return axios.delete(config.api_url + '/api/v1/note/delete/one/'+id)

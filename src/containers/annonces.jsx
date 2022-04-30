@@ -60,10 +60,10 @@ const Annonce = (props) => {
 <h1 className='titlePosteur'> <IoMdBoat /> Mes annonces</h1>
 
 
-<div className='divider'></div>
-<div className='controwposter'>
- <section className='mainContainerPoster'>
-   <section className='secondContainerPoster'>
+     <div className='divider'></div>
+    <div className='controwposter'>
+    <section className='mainContainerPoster'>
+     <section className='secondContainerPoster'>
 
   
               

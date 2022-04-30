@@ -96,6 +96,24 @@ const Categories = (props)=>{
                             )}
   
                           </div>
+
+                          <div className='container_cat_inter'>
+                          <li><Link to="/service"  className="profile_link">Semi-Rigide</Link></li>
+                          {( screenWidth > 500) && (
+                                    <div className='divider'></div>
+  
+                            )}
+  
+                          </div>
+
+                          <div className='container_cat_inter'>
+                          <li><Link to="/service"  className="profile_link">Place de Port</Link></li>
+                          {( screenWidth > 500) && (
+                                    <div className='divider'></div>
+  
+                            )}
+  
+                          </div>
               </ul>
 
              </div>

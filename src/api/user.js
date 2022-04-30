@@ -51,3 +51,25 @@ export const changeImg = (datas) => {
         return err
     })
 }
+
+//recuperer tous les utilisateurs
+export const getAllUsers = async () => {
+    try {
+        const response = await axios.get(config.api_url + '/api/v1/user/all');
+        return response.data;
+    } catch (err) {
+        return err;
+    }
+}
+
+// effacer un utilisateur
+export const deleteUser = async (id) => {
+    try {
+        const response = await axios.delete(config.api_url + '/api/v1/user/delete/' + id, { headers: { 'x-access-token': token }});
+        return response.data;
+    } catch (err) {
+        return err;
+    }
+}
+
+
